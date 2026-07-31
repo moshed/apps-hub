@@ -113,7 +113,7 @@
 
   <footer>
     <span>Built by Moshe Dancykier</span>
-    <span><a href="mailto:hello@dancykier.com">hello@dancykier.com</a></span>
+    <span><a href="mailto:general@dancykier.com">general@dancykier.com</a></span>
   </footer>
 </div>
 
@@ -129,27 +129,24 @@ const SECTIONS = [
     { n:"GroupSnap",     d:"One shared camera roll for everyone at your event.",                   u:"https://groupsnap.dancykier.com", b:"live", ic:"groupsnap", t:["#3a2c96","#7a2f6a"] },
     { n:"Media Check",   d:"Is this movie, show or book OK for my kid? Five severity scores + an age.", b:"beta", ic:"mediacheck", t:["#1a2a3f","#0e4a52"] },
     { n:"Pollen",        d:"Daily pollen forecast with a morning push.",                           b:"beta", ic:"pollen", t:["#1e5a34","#7bbf3a"] },
-    { n:"Song Maker",    d:"Turn a prompt into a full song.",                                       b:"beta", ic:"songmaker", t:["#2c2c96","#7a3fb5"] },
-    { n:"Kitchen Scale", d:"BLE kitchen scale → nutrition logging in HealthKit & Fitbit.",         b:"beta", ic:"kitchenscale", t:["#0e4a52","#2aa6a0"] },
+    { n:"Wordbox",       d:"Word games you play with friends, at your own pace.",                  b:"beta", ic:"wordbox", t:["#8a5a12","#e0a72b"] },
   ]},
   { title:"Web & games", apps:[
     { n:"Pinpoint",             d:"Read a clue, drop a pin — unlimited geography practice.", u:"https://geo.dancykier.com", b:"live", ic:"pinpoint", s:"pinpoint" },
     { n:"Chobes Roto Inspector",d:"Live monthly roto standings for a fantasy league.",       u:"https://chobes.dancykier.com", b:"live", ic:"chobes", s:"chobes" },
     { n:"Games",                d:"A hub of quick browser games.",                           u:"https://games.dancykier.com", b:"live", ic:"games", s:"games" },
     { n:"Hexicon",              d:"Spelling-bee style word hunt from a honeycomb.",          u:"https://spellingbee.dancykier.com", b:"live", ic:"hexicon", s:"hexicon" },
-    { n:"Boggle",               d:"Find every word in the shaken grid.",                     u:"https://boggle.dancykier.com", b:"live", ic:"boggle", s:"boggle" },
+    { n:"Scramble",             d:"Find every word in the shaken grid.",                     u:"https://boggle.dancykier.com", b:"live", ic:"boggle", s:"scramble" },
     { n:"Anagrams",             d:"Unscramble against the clock.",                           u:"https://anagrams.dancykier.com", b:"live", ic:"anagrams", s:"anagrams" },
-    { n:"Wordbox",              d:"Word games you play with friends, at your own pace.",     u:"https://wordbox.dancykier.com", b:"live", ic:"wordbox", t:["#8a5a12","#e0a72b"] },
-    { n:"Angry Men Rankings",   d:"The Angry Men humor-ranking ballot.",                     u:"https://amhumor.dancykier.com", b:"live", ic:"angrymen", s:"angrymen" },
-    { n:"360 Spin",             d:"Interactive 360° product spin viewer.",                   u:"https://360.dancykier.com", b:"live", ic:"spin360", s:"spin360" },
+    { n:"Angry Men Rankings",   d:"Live humor standings for the Angry Men. Voting is by private link only.", u:"https://amhumor.dancykier.com", b:"live", ic:"angrymen", s:"angrymen" },
   ]},
   { title:"Mac apps", apps:[
     { n:"Beam",              d:"A Spotlight-style search bar that also computes.",                        u:"https://beam.dancykier.com", b:"mac", ic:"beam", s:"beam", cta:"Download" },
-    { n:"TextLift",          d:"Global shortcut → drag a region → the text is on your clipboard.",        b:"mac", ic:"textlift", t:["#173a5b","#3b7fb0"] },
-    { n:"Clipboard History", d:"A fast, searchable panel of everything you've copied.",                   b:"mac", ic:"clipboard", t:["#2a3340","#586c85"] },
-    { n:"ClaudeBar",         d:"Menu-bar notifications for Claude Code; a click focuses the right terminal.", b:"mac", ic:"claudebar", t:["#7a3a1e","#e07b3a"] },
-    { n:"RunApp",            d:"One-tap launcher for my iOS apps with a live unified log viewer.",         b:"mac", ic:"runapp", t:["#1e5a34","#3aa96a"] },
-    { n:"ClipPiP",           d:"Float your clipboard in an always-on-top picture-in-picture panel.",      b:"mac", ic:"clippip", t:["#2c2f7a","#5a5ed6"] },
+    { n:"TextLift",          d:"Global shortcut → drag a region → the text is on your clipboard.",        u:"https://github.com/moshed/TextLift", b:"mac", ic:"textlift", t:["#173a5b","#3b7fb0"], cta:"GitHub" },
+    { n:"Clipboard History", d:"A fast, searchable panel of everything you've copied.",                   u:"https://github.com/moshed/Clipboard-Manager", b:"mac", ic:"clipboard", t:["#2a3340","#586c85"], cta:"GitHub" },
+    { n:"ClaudeBar",         d:"Menu-bar notifications for Claude Code; a click focuses the right terminal.", u:"https://github.com/moshed/ClaudeBar", b:"mac", ic:"claudebar", t:["#7a3a1e","#e07b3a"], cta:"GitHub" },
+    { n:"RunApp",            d:"One-tap launcher for my iOS apps with a live unified log viewer.",         u:"https://github.com/moshed/run-app", b:"mac", ic:"runapp", t:["#1e5a34","#3aa96a"], cta:"GitHub" },
+    { n:"ClipPiP",           d:"Float your clipboard in an always-on-top picture-in-picture panel.",      u:"https://github.com/moshed/ClipPiP", b:"mac", ic:"clippip", t:["#2c2f7a","#5a5ed6"], cta:"GitHub" },
   ]},
 ];
 
@@ -171,11 +168,11 @@ SECTIONS.forEach(sec=>{
     if(linked){ el.href=a.u; el.target='_blank'; el.rel='noopener'; }
     el.dataset.k = (a.n+' '+a.d).toLowerCase();
     const thumb = a.s
-      ? `<div class="thumb"><span class="plat">${plat}</span><img class="shot" loading="lazy" src="thumbs/${a.s}.jpg?v=2" alt="${a.n} screenshot"></div>`
-      : `<div class="thumb tile" style="background:linear-gradient(150deg, ${a.t?a.t[0]:'#1e2a3b'}, ${a.t?a.t[1]:'#141c29'})"><span class="plat">${plat}</span><img class="bigic" loading="lazy" src="icons/${a.ic}.png?v=2" alt="${a.n} icon"></div>`;
+      ? `<div class="thumb"><span class="plat">${plat}</span><img class="shot" loading="lazy" src="thumbs/${a.s}.jpg?v=3" alt="${a.n} screenshot"></div>`
+      : `<div class="thumb tile" style="background:linear-gradient(150deg, ${a.t?a.t[0]:'#1e2a3b'}, ${a.t?a.t[1]:'#141c29'})"><span class="plat">${plat}</span><img class="bigic" loading="lazy" src="icons/${a.ic}.png?v=3" alt="${a.n} icon"></div>`;
     el.innerHTML = thumb +
       `<div class="meta">`+
-        `<img class="ic" loading="lazy" src="icons/${a.ic}.png?v=2" alt="">`+
+        `<img class="ic" loading="lazy" src="icons/${a.ic}.png?v=3" alt="">`+
         `<div class="txt">`+
           `<div class="name">${a.n}</div>`+
           `<p class="desc">${a.d}</p>`+
