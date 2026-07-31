@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dancykier Apps</title>
+<meta name="description" content="Everything Moshe Dancykier has built — iOS apps, web games and Mac utilities, in one place.">
+<meta name="theme-color" content="#0b1017">
+<link rel="icon" href="favicon.svg?v=1" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=1">
+<style>
+  :root{
+    --bg:#0b1017; --bg2:#0e141f;
+    --panel:#141c29; --panel-2:#18212f; --panel-3:#1e2a3b;
+    --border:#243247; --border-soft:#1b2432;
+    --text:#e8eef6; --dim:#93a4ba; --mute:#5f7089;
+    --accent:#6ea3ff; --accent-2:#48d597; --warm:#ffb44a; --pink:#f2603a;
+    --sans:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,sans-serif;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:
+      radial-gradient(1100px 620px at 78% -8%, rgba(110,163,255,.10), transparent 60%),
+      radial-gradient(900px 520px at 8% 4%, rgba(72,213,151,.07), transparent 55%),
+      var(--bg);
+    color:var(--text); font:15px/1.5 var(--sans);
+    -webkit-font-smoothing:antialiased; min-height:100vh;
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:0 20px 90px}
+
+  /* ── Masthead ─────────────────────────────── */
+  header.top{padding:56px 0 26px}
+  .eyebrow{color:var(--accent); font:600 11px/1 var(--mono); letter-spacing:.16em; text-transform:uppercase; margin:0 0 14px}
+  h1{margin:0; font:800 clamp(30px,5vw,46px)/1.03 var(--sans); letter-spacing:-.025em}
+  h1 .dot{color:var(--accent)}
+  .lede{color:var(--dim); font-size:16px; margin:12px 0 0; max-width:56ch}
+  .lede b{color:var(--text); font-weight:600}
+
+  /* ── Search ───────────────────────────────── */
+  .searchbar{position:sticky; top:0; z-index:20; margin:26px 0 6px; padding:14px 0;
+    background:linear-gradient(var(--bg) 62%, transparent);
+    backdrop-filter:saturate(140%) blur(4px)}
+  .search{position:relative; display:flex; align-items:center}
+  .search svg{position:absolute; left:16px; width:18px; height:18px; color:var(--mute); pointer-events:none}
+  #q{width:100%; padding:14px 16px 14px 46px; font:500 15px/1 var(--sans); color:var(--text);
+     background:var(--panel); border:1px solid var(--border); border-radius:12px; outline:none; transition:border-color .15s, box-shadow .15s}
+  #q::placeholder{color:var(--mute)}
+  #q:focus{border-color:var(--accent); box-shadow:0 0 0 3px rgba(110,163,255,.18)}
+
+  /* ── Sections ─────────────────────────────── */
+  section{margin-top:34px}
+  .sec-head{display:flex; align-items:baseline; gap:10px; margin:0 2px 14px; padding-bottom:12px; border-bottom:1px solid var(--border-soft)}
+  .sec-head h2{margin:0; font:700 15px/1 var(--sans); letter-spacing:-.01em}
+  .sec-head .count{color:var(--mute); font:600 11px/1 var(--mono)}
+  .sec-head .rule{flex:1}
+
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(268px,1fr)); gap:12px}
+
+  .card{position:relative; display:flex; gap:14px; padding:16px; text-decoration:none; color:inherit;
+    background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+    transition:transform .14s ease, border-color .14s ease, background .14s ease; overflow:hidden}
+  a.card:hover{transform:translateY(-2px); border-color:#31425c; background:var(--panel-2)}
+  a.card:active{transform:translateY(0)}
+  .card.nolink{cursor:default}
+  .card .ico{flex:0 0 46px; width:46px; height:46px; border-radius:12px; display:grid; place-items:center;
+    font-size:23px; background:var(--panel-3); border:1px solid var(--border-soft)}
+  .card .body{min-width:0; flex:1}
+  .card .name{display:flex; align-items:center; gap:8px; font:700 15px/1.2 var(--sans); letter-spacing:-.01em}
+  .card .desc{color:var(--dim); font-size:13px; margin:5px 0 0}
+  .card .go{position:absolute; top:15px; right:15px; color:var(--mute); opacity:0; transform:translateX(-3px); transition:opacity .14s, transform .14s}
+  a.card:hover .go{opacity:1; transform:translateX(0)}
+
+  .badge{flex:0 0 auto; font:600 9.5px/1 var(--mono); letter-spacing:.05em; text-transform:uppercase;
+    padding:4px 7px; border-radius:6px; border:1px solid transparent}
+  .b-store{color:#bcd4ff; background:rgba(110,163,255,.13); border-color:rgba(110,163,255,.28)}
+  .b-live {color:#8ff0c4; background:rgba(72,213,151,.12); border-color:rgba(72,213,151,.28)}
+  .b-mac  {color:#e9d6ff; background:rgba(179,132,181,.14); border-color:rgba(179,132,181,.30)}
+  .b-beta {color:#ffd9a6; background:rgba(255,180,74,.12); border-color:rgba(255,180,74,.30)}
+  .b-soon {color:#9fb0c6; background:rgba(120,140,170,.12); border-color:rgba(120,140,170,.26)}
+
+  .empty{display:none; color:var(--mute); font-size:14px; padding:26px 2px}
+  section.hidden{display:none}
+
+  footer{margin-top:52px; padding-top:22px; border-top:1px solid var(--border-soft);
+    color:var(--mute); font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px}
+  footer a{color:var(--dim); text-decoration:none}
+  footer a:hover{color:var(--text)}
+
+  @media (max-width:560px){
+    header.top{padding:40px 0 18px}
+    .grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="eyebrow">dancykier.com</p>
+    <h1>Everything I've built<span class="dot">.</span></h1>
+    <p class="lede">A running index of my <b>iOS apps</b>, <b>web games</b> and <b>Mac utilities</b>. Tap any card to open it.</p>
+  </header>
+
+  <div class="searchbar">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="Filter apps…" autocomplete="off" spellcheck="false" aria-label="Filter apps">
+    </div>
+  </div>
+
+  <main id="sections"></main>
+
+  <p class="empty" id="empty">No apps match that.</p>
+
+  <footer>
+    <span>Built by Moshe Dancykier</span>
+    <span><a href="mailto:hello@dancykier.com">hello@dancykier.com</a></span>
+  </footer>
+
+</div>
+
+<script>
+const SECTIONS = [
+  { title:"iOS apps", apps:[
+    { n:"Jukebox",       d:"Guests vote on the party playlist — join by being nearby, no code.", u:"https://jukebox.dancykier.com", b:"store", i:"🎶" },
+    { n:"Stitch",        d:"Combine iPhone screenshots into one long, seam-matched image.",       u:"https://stitch.dancykier.com",  b:"store", i:"🧵" },
+    { n:"Sports Alerts", d:"Real-time baseball prospect & call-up notifications.",                 u:"https://sportsalerts.dancykier.com", b:"live", i:"⚾" },
+    { n:"Bus Tracker",   d:"Live bus arrival times, no clutter.",                                  u:"https://bustracker.dancykier.com", b:"live", i:"🚌" },
+    { n:"GroupSnap",     d:"Shared photo albums for a group, the easy way.",                       u:"https://groupsnap.dancykier.com", b:"live", i:"📸" },
+    { n:"Media Check",   d:"Is this movie, show or book OK for my kid? Five severity scores + an age.", b:"beta", i:"🎬" },
+    { n:"Pollen",        d:"Daily pollen forecast with a morning push.",                           b:"beta", i:"🌾" },
+    { n:"Song Maker",    d:"Turn a prompt into a full song.",                                       b:"beta", i:"🎵" },
+    { n:"Kitchen Scale", d:"BLE kitchen scale → nutrition logging in HealthKit & Fitbit.",         b:"beta", i:"⚖️" },
+  ]},
+  { title:"Web & games", apps:[
+    { n:"Pinpoint",             d:"Read a clue, drop a pin — unlimited geography practice.", u:"https://geo.dancykier.com", b:"live", i:"📍" },
+    { n:"Chobes Roto Inspector",d:"Live monthly roto standings for a fantasy league.",       u:"https://chobes.dancykier.com", b:"live", i:"📊" },
+    { n:"Games",                d:"A hub of quick browser games.",                           u:"https://games.dancykier.com", b:"live", i:"🎮" },
+    { n:"Hexicon",              d:"Spelling-bee style word hunt from a honeycomb.",          u:"https://spellingbee.dancykier.com", b:"live", i:"🐝" },
+    { n:"Boggle",               d:"Find every word in the shaken grid.",                     u:"https://boggle.dancykier.com", b:"live", i:"🔤" },
+    { n:"Anagrams",             d:"Unscramble against the clock.",                           u:"https://anagrams.dancykier.com", b:"live", i:"🔀" },
+    { n:"Wordbox",              d:"A box of word puzzles.",                                  u:"https://wordbox.dancykier.com", b:"live", i:"📦" },
+    { n:"Angry Men Rankings",   d:"The Angry Men humor-ranking ballot.",                     u:"https://amhumor.dancykier.com", b:"live", i:"😤" },
+    { n:"360 Spin",             d:"Interactive 360° product spin viewer.",                   u:"https://360.dancykier.com", b:"live", i:"🔄" },
+  ]},
+  { title:"Mac apps", apps:[
+    { n:"Beam",              d:"A Spotlight-style search bar that also computes.",                        u:"https://beam.dancykier.com", b:"mac", i:"🔍", cta:"Download" },
+    { n:"TextLift",          d:"Global shortcut → drag a region → the text is on your clipboard.",        b:"mac", i:"🔡" },
+    { n:"Clipboard History", d:"A fast, searchable panel of everything you've copied.",                   b:"mac", i:"📋" },
+    { n:"ClaudeBar",         d:"Menu-bar notifications for Claude Code; a click focuses the right terminal.", b:"mac", i:"🟠" },
+    { n:"RunApp",            d:"One-tap launcher for my iOS apps with a live unified log viewer.",         b:"mac", i:"▶️" },
+    { n:"ClipPiP",           d:"Float your clipboard in an always-on-top picture-in-picture panel.",      b:"mac", i:"🖼️" },
+  ]},
+];
+
+const BADGE = {
+  store:["b-store","App Store"], live:["b-live","Live"],
+  mac:["b-mac","macOS"], beta:["b-beta","TestFlight"], soon:["b-soon","Soon"],
+};
+
+const secWrap = document.getElementById('sections');
+SECTIONS.forEach(sec=>{
+  const s = document.createElement('section');
+  s.dataset.title = sec.title.toLowerCase();
+  s.innerHTML = `<div class="sec-head"><h2>${sec.title}</h2><span class="count">${sec.apps.length}</span><span class="rule"></span></div>`;
+  const grid = document.createElement('div'); grid.className='grid';
+  sec.apps.forEach(a=>{
+    const [bc,bl] = BADGE[a.b] || BADGE.soon;
+    const linked = !!a.u;
+    const el = document.createElement(linked?'a':'div');
+    el.className = 'card' + (linked?'':' nolink');
+    if(linked){ el.href=a.u; el.target='_blank'; el.rel='noopener'; }
+    el.dataset.k = (a.n+' '+a.d).toLowerCase();
+    el.innerHTML =
+      `<div class="ico">${a.i}</div>`+
+      `<div class="body">`+
+        `<div class="name">${a.n} <span class="badge ${bc}">${a.cta||bl}</span></div>`+
+        `<p class="desc">${a.d}</p>`+
+      `</div>`+
+      (linked?`<span class="go" aria-hidden="true">↗</span>`:``);
+    grid.appendChild(el);
+  });
+  s.appendChild(grid);
+  secWrap.appendChild(s);
+});
+
+// ── Live filter ──
+const q = document.getElementById('q');
+const empty = document.getElementById('empty');
+q.addEventListener('input', ()=>{
+  const term = q.value.trim().toLowerCase();
+  let anyVisible = false;
+  document.querySelectorAll('section').forEach(sec=>{
+    let shown = 0;
+    sec.querySelectorAll('.card').forEach(c=>{
+      const hit = !term || c.dataset.k.includes(term);
+      c.style.display = hit ? '' : 'none';
+      if(hit) shown++;
+    });
+    sec.classList.toggle('hidden', shown===0);
+    if(shown) anyVisible = true;
+  });
+  empty.style.display = anyVisible ? 'none' : 'block';
+});
+</script>
+</body>
+</html>
