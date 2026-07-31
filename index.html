@@ -80,6 +80,9 @@
   .b-live {color:#8ff0c4; background:rgba(72,213,151,.12); border-color:rgba(72,213,151,.28)}
   .b-mac  {color:#e9d6ff; background:rgba(179,132,181,.14); border-color:rgba(179,132,181,.30)}
   .b-beta {color:#ffd9a6; background:rgba(255,180,74,.12); border-color:rgba(255,180,74,.30)}
+  .b-x   {color:#cfe0ee; background:rgba(120,150,180,.14); border-color:rgba(150,175,200,.30)}
+  .thumb.tile.bot img.bigic{width:104px; height:104px; border-radius:50%; border:3px solid rgba(255,255,255,.14)}
+  .handle{color:var(--mute); font:600 11px/1 var(--mono)}
 
   .empty{display:none; color:var(--mute); font-size:14px; padding:26px 2px}
   section.hidden{display:none}
@@ -98,7 +101,7 @@
   <header class="top">
     <p class="eyebrow">apps.dancykier.com</p>
     <h1>Everything I've built<span class="dot">.</span></h1>
-    <p class="lede">A running index of my <b>iOS apps</b>, <b>web games</b> and <b>Mac utilities</b>. Tap any card to open it.</p>
+    <p class="lede">A running index of my <b>iOS apps</b>, <b>web games</b>, <b>Mac utilities</b> and <b>Twitter bots</b>. Tap any card to open it.</p>
   </header>
 
   <div class="searchbar">
@@ -148,10 +151,16 @@ const SECTIONS = [
     { n:"RunApp",            d:"One-tap launcher for my iOS apps with a live unified log viewer.",         u:"https://github.com/moshed/run-app", b:"mac", ic:"runapp", t:["#1e5a34","#3aa96a"], cta:"GitHub" },
     { n:"ClipPiP",           d:"Float your clipboard in an always-on-top picture-in-picture panel.",      u:"https://github.com/moshed/ClipPiP", b:"mac", ic:"clippip", t:["#2c2f7a","#5a5ed6"], cta:"GitHub" },
   ]},
+  { title:"Twitter bots", apps:[
+    { n:"MLB Prospects", h:"@mlbprospectsbot", d:"Every call-up and MLB debut, the moment it's official.",        u:"https://x.com/mlbprospectsbot", b:"x", ic:"prospectsbot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
+    { n:"MLB Bulk & Openers", h:"@MLBBulkbot", d:"Opener and bulk-pitcher calls before first pitch.",             u:"https://x.com/MLBBulkbot", b:"x", ic:"bulkbot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
+    { n:"MLB Injuries", h:"@MLBInjuryBot", d:"Injuries and IL moves the moment they're reported.",                u:"https://x.com/MLBInjuryBot", b:"x", ic:"injurybot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
+    { n:"MLB Closers", h:"@mlbclosersbot", d:"Save situations and closer role changes as they shift.",           u:"https://x.com/mlbclosersbot", b:"x", ic:"closersbot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
+  ]},
 ];
 
-const BADGE = { store:["b-store","App Store"], live:["b-live","Live"], mac:["b-mac","macOS"], beta:["b-beta","TestFlight"] };
-const PLAT  = { store:"iOS", live:"iOS", beta:"iOS", mac:"macOS" };
+const BADGE = { store:["b-store","App Store"], live:["b-live","Live"], mac:["b-mac","macOS"], beta:["b-beta","TestFlight"], x:["b-x","X"] };
+const PLAT  = { store:"iOS", live:"iOS", beta:"iOS", mac:"macOS", x:"X" };
 const secWrap = document.getElementById('sections');
 
 SECTIONS.forEach(sec=>{
@@ -166,15 +175,15 @@ SECTIONS.forEach(sec=>{
     const el = document.createElement(linked?'a':'div');
     el.className = 'card' + (linked?'':' nolink');
     if(linked){ el.href=a.u; el.target='_blank'; el.rel='noopener'; }
-    el.dataset.k = (a.n+' '+a.d).toLowerCase();
+    el.dataset.k = (a.n+' '+a.d+' '+(a.h||'')).toLowerCase();
     const thumb = a.s
-      ? `<div class="thumb"><span class="plat">${plat}</span><img class="shot" loading="lazy" src="thumbs/${a.s}.jpg?v=4" alt="${a.n} screenshot"></div>`
-      : `<div class="thumb tile" style="background:linear-gradient(150deg, ${a.t?a.t[0]:'#1e2a3b'}, ${a.t?a.t[1]:'#141c29'})"><span class="plat">${plat}</span><img class="bigic" loading="lazy" src="icons/${a.ic}.png?v=4" alt="${a.n} icon"></div>`;
+      ? `<div class="thumb"><span class="plat">${plat}</span><img class="shot" loading="lazy" src="thumbs/${a.s}.jpg?v=5" alt="${a.n} screenshot"></div>`
+      : `<div class="thumb tile${a.bot?' bot':''}" style="background:linear-gradient(150deg, ${a.t?a.t[0]:'#1e2a3b'}, ${a.t?a.t[1]:'#141c29'})"><span class="plat">${plat}</span><img class="bigic" loading="lazy" src="icons/${a.ic}.png?v=5" alt="${a.n} icon"></div>`;
     el.innerHTML = thumb +
       `<div class="meta">`+
-        `<img class="ic" loading="lazy" src="icons/${a.ic}.png?v=4" alt="">`+
+        `<img class="ic" loading="lazy" src="icons/${a.ic}.png?v=5" alt="">`+
         `<div class="txt">`+
-          `<div class="name">${a.n}</div>`+
+          `<div class="name">${a.n}${a.h?` <span class="handle">${a.h}</span>`:''}</div>`+
           `<p class="desc">${a.d}</p>`+
         `</div>`+
         `<span class="badge ${bc}">${a.cta||bl}</span>`+
