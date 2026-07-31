@@ -126,10 +126,10 @@ const SECTIONS = [
     { n:"Stitch",        d:"Combine iPhone screenshots into one long, seam-matched image.",       u:"https://stitch.dancykier.com",  b:"store", ic:"stitch", s:"stitch" },
     { n:"Sports Alerts", d:"Real-time baseball prospect & call-up notifications.",                 u:"https://sportsalerts.dancykier.com", b:"live", ic:"sportsalerts", s:"sportsalerts" },
     { n:"Bus Tracker",   d:"Live bus arrival times, no clutter.",                                  u:"https://bustracker.dancykier.com", b:"live", ic:"bustracker", s:"bustracker" },
-    { n:"GroupSnap",     d:"One shared camera roll for everyone at your event.",                   u:"https://groupsnap.dancykier.com", b:"live", ic:"groupsnap", t:["#3a2c96","#7a2f6a"] },
-    { n:"Media Check",   d:"Is this movie, show or book OK for my kid? Five severity scores + an age.", b:"beta", ic:"mediacheck", t:["#1a2a3f","#0e4a52"] },
-    { n:"Pollen",        d:"Daily pollen forecast with a morning push.",                           b:"beta", ic:"pollen", t:["#1e5a34","#7bbf3a"] },
-    { n:"Wordbox",       d:"Word games you play with friends, at your own pace.",                  b:"beta", ic:"wordbox", t:["#8a5a12","#e0a72b"] },
+    { n:"GroupSnap",     d:"One shared camera roll for everyone at your event.",                   u:"https://groupsnap.dancykier.com", b:"live", s:"groupsnap", ic:"groupsnap", t:["#3a2c96","#7a2f6a"] },
+    { n:"Media Check",   d:"Is this movie, show or book OK for my kid? Five severity scores + an age.", b:"beta", s:"mediacheck", ic:"mediacheck", t:["#1a2a3f","#0e4a52"] },
+    { n:"Pollen",        d:"Daily pollen forecast with a morning push.",                           b:"beta", s:"pollen", ic:"pollen", t:["#1e5a34","#7bbf3a"] },
+    { n:"Wordbox",       d:"Word games you play with friends, at your own pace.",                  b:"beta", s:"wordbox", ic:"wordbox", t:["#8a5a12","#e0a72b"] },
   ]},
   { title:"Web & games", apps:[
     { n:"Pinpoint",             d:"Read a clue, drop a pin — unlimited geography practice.", u:"https://geo.dancykier.com", b:"live", ic:"pinpoint", s:"pinpoint" },
@@ -168,11 +168,11 @@ SECTIONS.forEach(sec=>{
     if(linked){ el.href=a.u; el.target='_blank'; el.rel='noopener'; }
     el.dataset.k = (a.n+' '+a.d).toLowerCase();
     const thumb = a.s
-      ? `<div class="thumb"><span class="plat">${plat}</span><img class="shot" loading="lazy" src="thumbs/${a.s}.jpg?v=3" alt="${a.n} screenshot"></div>`
-      : `<div class="thumb tile" style="background:linear-gradient(150deg, ${a.t?a.t[0]:'#1e2a3b'}, ${a.t?a.t[1]:'#141c29'})"><span class="plat">${plat}</span><img class="bigic" loading="lazy" src="icons/${a.ic}.png?v=3" alt="${a.n} icon"></div>`;
+      ? `<div class="thumb"><span class="plat">${plat}</span><img class="shot" loading="lazy" src="thumbs/${a.s}.jpg?v=4" alt="${a.n} screenshot"></div>`
+      : `<div class="thumb tile" style="background:linear-gradient(150deg, ${a.t?a.t[0]:'#1e2a3b'}, ${a.t?a.t[1]:'#141c29'})"><span class="plat">${plat}</span><img class="bigic" loading="lazy" src="icons/${a.ic}.png?v=4" alt="${a.n} icon"></div>`;
     el.innerHTML = thumb +
       `<div class="meta">`+
-        `<img class="ic" loading="lazy" src="icons/${a.ic}.png?v=3" alt="">`+
+        `<img class="ic" loading="lazy" src="icons/${a.ic}.png?v=4" alt="">`+
         `<div class="txt">`+
           `<div class="name">${a.n}</div>`+
           `<p class="desc">${a.d}</p>`+
