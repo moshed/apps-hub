@@ -87,6 +87,11 @@
   .empty{display:none; color:var(--mute); font-size:14px; padding:26px 2px}
   section.hidden{display:none}
 
+  .sitelinks{margin-top:44px;padding-top:20px;border-top:1px solid var(--border-soft)}
+  .sitelinks h2{font-size:13px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin:0 0 10px}
+  .sitelinks ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px 18px}
+  .sitelinks a{color:var(--dim);text-decoration:none;font-size:13.5px}
+  .sitelinks a:hover{color:var(--text);text-decoration:underline}
   footer{margin-top:52px; padding-top:22px; border-top:1px solid var(--border-soft);
     color:var(--mute); font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px}
   footer a{color:var(--dim); text-decoration:none}
@@ -113,6 +118,36 @@
 
   <main id="sections"></main>
   <p class="empty" id="empty">No apps match that.</p>
+
+
+  <nav class="sitelinks" aria-label="All projects">
+    <h2>All projects</h2>
+    <ul>
+      <li><a href="https://jukebox.dancykier.com">Jukebox</a></li>
+      <li><a href="https://stitch.dancykier.com">Stitch</a></li>
+      <li><a href="https://sportsalerts.dancykier.com">Sports Alerts</a></li>
+      <li><a href="https://bustracker.dancykier.com">Bus Tracker</a></li>
+      <li><a href="https://groupsnap.dancykier.com">GroupSnap</a></li>
+      <li><a href="https://intercom.dancykier.com">Intercom</a></li>
+      <li><a href="https://geo.dancykier.com">Pinpoint</a></li>
+      <li><a href="https://chobes.dancykier.com">Chobes Roto Inspector</a></li>
+      <li><a href="https://games.dancykier.com">Games</a></li>
+      <li><a href="https://spellingbee.dancykier.com">Hexicon</a></li>
+      <li><a href="https://boggle.dancykier.com">Scramble</a></li>
+      <li><a href="https://anagrams.dancykier.com">Anagrams</a></li>
+      <li><a href="https://amhumor.dancykier.com">Angry Men Rankings</a></li>
+      <li><a href="https://beam.dancykier.com">Beam</a></li>
+      <li><a href="https://github.com/moshed/TextLift">TextLift</a></li>
+      <li><a href="https://github.com/moshed/Clipboard-Manager">Clipboard History</a></li>
+      <li><a href="https://github.com/moshed/ClaudeBar">ClaudeBar</a></li>
+      <li><a href="https://github.com/moshed/run-app">RunApp</a></li>
+      <li><a href="https://github.com/moshed/ClipPiP">ClipPiP</a></li>
+      <li><a href="https://x.com/mlbprospectsbot">MLB Prospects</a></li>
+      <li><a href="https://x.com/MLBBulkbot">MLB Bulk & Openers</a></li>
+      <li><a href="https://x.com/MLBInjuryBot">MLB Injuries</a></li>
+      <li><a href="https://x.com/mlbclosersbot">MLB Closers</a></li>
+    </ul>
+  </nav>
 
   <footer>
     <span>Built by Moshe Dancykier</span>
