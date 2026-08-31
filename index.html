@@ -171,30 +171,50 @@
   a.card:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
   .card.nolink{cursor:default}
 
-  .thumb{position:relative; aspect-ratio:16/10; width:100%; overflow:hidden; background:var(--panel-3);
+  /* Art band. Screenshots crop tight so the phone fills the frame; icon-only
+     apps get a blurred blow-up of their own icon behind the crisp one. */
+  .thumb{position:relative; aspect-ratio:16/9; width:100%; overflow:hidden; background:var(--panel-3);
     border-bottom:1px solid var(--border-soft)}
-  .thumb img.shot{width:100%; height:100%; object-fit:cover; object-position:top center; display:block;
-    transition:transform .35s ease}
-  a.card:hover .thumb img.shot{transform:scale(1.04)}
-  .thumb.tile{display:grid; place-items:center}
-  .thumb.tile img.bigic{width:78px; height:78px; border-radius:19px;
-    box-shadow:0 12px 28px rgba(0,0,0,.36); transition:transform .35s ease}
-  a.card:hover .thumb.tile img.bigic{transform:scale(1.06)}
-  .thumb .plat{position:absolute; top:10px; left:10px; font:600 9.5px/1 var(--mono); letter-spacing:.05em;
-    color:var(--plat-fg); background:var(--plat-bg); backdrop-filter:blur(4px);
-    padding:5px 8px; border-radius:7px; border:1px solid var(--plat-br)}
-  .thumb.tile .plat{color:#cdd8e6; background:rgba(11,16,23,.5); border-color:rgba(255,255,255,.12)}
+  .thumb img.shot{width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block;
+    transition:transform .4s ease}
+  a.card:hover .thumb img.shot{transform:scale(1.05)}
 
-  .meta{padding:13px 14px 15px; display:flex; align-items:center; gap:11px}
-  .meta .ic{flex:0 0 32px; width:32px; height:32px; border-radius:9px; object-fit:cover;
+  .thumb.tile{display:grid; place-items:center}
+  .thumb.tile .blurbg{position:absolute; left:-25%; top:-25%; width:150%; height:150%;
+    object-fit:cover; filter:blur(32px) saturate(1.7); opacity:.82; transform:scale(1.15)}
+  .thumb.tile::after{content:""; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(155deg, rgba(255,255,255,.14), rgba(0,0,0,.34) 72%)}
+  .thumb.tile img.bigic{position:relative; z-index:1; width:74px; height:74px; border-radius:18px;
+    box-shadow:0 14px 30px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.10);
+    transition:transform .4s ease}
+  a.card:hover .thumb.tile img.bigic{transform:scale(1.07)}
+  .thumb.tile.bot img.bigic{width:92px; height:92px; border-radius:50%; border:3px solid rgba(255,255,255,.22)}
+  /* Bot avatars are mostly white, so a plain blur greys the tile out. Dim it hard
+     and let the navy gradient underneath carry the colour. */
+  .thumb.tile.bot .blurbg{filter:blur(40px) saturate(2.4) brightness(.5); opacity:.45}
+  .thumb.tile.bot::after{background:linear-gradient(155deg, rgba(90,140,210,.16), rgba(4,8,14,.62) 78%)}
+
+  .thumb .plat{position:absolute; z-index:2; top:9px; left:9px; font:600 9.5px/1 var(--mono);
+    letter-spacing:.05em; color:var(--plat-fg); background:var(--plat-bg); backdrop-filter:blur(4px);
+    padding:5px 8px; border-radius:7px; border:1px solid var(--plat-br)}
+  .thumb.tile .plat{color:#e6edf6; background:rgba(8,12,18,.42); border-color:rgba(255,255,255,.16)}
+
+  /* Meta. Every card is the same height: one title line, two description lines. */
+  .meta{padding:12px 14px 14px; display:flex; align-items:flex-start; gap:11px}
+  .meta .ic{flex:0 0 34px; width:34px; height:34px; border-radius:9px; object-fit:cover;
     background:var(--panel-3); border:1px solid var(--border-soft)}
   .meta .txt{min-width:0; flex:1}
-  .name{display:flex; align-items:center; gap:8px; font:700 14.5px/1.2 var(--sans); letter-spacing:-.015em}
-  .desc{color:var(--dim); font-size:12.5px; line-height:1.45; margin:4px 0 0}
+  .row1{display:flex; align-items:center; gap:8px; min-width:0}
+  .name{font:700 14.5px/1.25 var(--sans); letter-spacing:-.015em; white-space:nowrap;
+    overflow:hidden; text-overflow:ellipsis}
+  .desc{color:var(--dim); font-size:12.5px; line-height:1.42; margin:4px 0 0;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+    min-height:2.84em}
 
-  .badge{flex:0 0 auto; margin-left:auto; align-self:flex-start; margin-top:2px;
-    font:600 9px/1 var(--mono); letter-spacing:.05em; text-transform:uppercase;
-    padding:5px 7px; border-radius:6px; border:1px solid transparent; white-space:nowrap}
+  .badge{flex:0 0 auto; margin-left:auto; font:600 9px/1 var(--mono); letter-spacing:.05em;
+    text-transform:uppercase; padding:5px 7px; border-radius:6px; border:1px solid transparent;
+    white-space:nowrap}
+
   .b-store{color:#1b47a8; background:rgba(47,107,240,.10); border-color:rgba(47,107,240,.26)}
   .b-live {color:#0a6b46; background:rgba(20,170,120,.11); border-color:rgba(20,170,120,.28)}
   .b-mac  {color:#6b2f8a; background:rgba(150,80,190,.10); border-color:rgba(150,80,190,.26)}
@@ -212,9 +232,7 @@
     :root:not([data-theme="light"]) .b-beta {color:#ffd9a6; background:rgba(255,180,74,.12); border-color:rgba(255,180,74,.30)}
     :root:not([data-theme="light"]) .b-x    {color:#cfe0ee; background:rgba(120,150,180,.14); border-color:rgba(150,175,200,.30)}
   }
-
-  .thumb.tile.bot img.bigic{width:106px; height:106px; border-radius:50%; border:3px solid rgba(255,255,255,.16)}
-  .handle{color:var(--mute); font:600 11px/1 var(--mono)}
+  .handle{color:var(--mute); font:600 11px/1 var(--mono); flex:0 0 auto}
 
   .empty{display:none; color:var(--mute); font-size:14px; padding:28px 2px}
   section.hidden{display:none}
@@ -284,15 +302,15 @@
 // t: [c1,c2] tile gradient used behind the big icon when there is no screenshot.
 const SECTIONS = [
   { title:"iOS apps", apps:[
-    { n:"Jukebox",       d:"Guests vote on the party playlist — join by being nearby, no code.", u:"https://jukebox.dancykier.com", b:"store", ic:"jukebox", s:"jukebox" },
+    { n:"Jukebox",       d:"Guests vote on the party playlist. No code to join.", u:"https://jukebox.dancykier.com", b:"store", ic:"jukebox", s:"jukebox" },
     { n:"Stitch",        d:"Combine iPhone screenshots into one long, seam-matched image.",       u:"https://stitch.dancykier.com",  b:"store", ic:"stitch", s:"stitch" },
     { n:"Sports Alerts", d:"Real-time baseball prospect & call-up notifications.",                 u:"https://sportsalerts.dancykier.com", b:"live", ic:"sportsalerts", s:"sportsalerts" },
     { n:"Bus Tracker",   d:"Live bus arrival times, no clutter.",                                  u:"https://bustracker.dancykier.com", b:"live", ic:"bustracker", s:"bustracker" },
     { n:"GroupSnap",     d:"One shared camera roll for everyone at your event.",                   u:"https://groupsnap.dancykier.com", b:"live", s:"groupsnap", ic:"groupsnap", t:["#3a2c96","#7a2f6a"] },
-    { n:"Dish It Out",   d:"Rate the dish, not the restaurant — per-dish notes you share with friends.", b:"beta", ic:"dishitout", t:["#c2562c","#7d2f14"] },
-    { n:"Media Check",   d:"Is this movie, show or book OK for my kid? Five severity scores + an age.", b:"beta", s:"mediacheck", ic:"mediacheck", t:["#1a2a3f","#0e4a52"] },
+    { n:"Dish It Out",   d:"Rate the dish, not the restaurant. Notes you share with friends.", b:"beta", ic:"dishitout", t:["#c2562c","#7d2f14"] },
+    { n:"Media Check",   d:"Is this movie or show OK for my kid? Five severity scores.", b:"beta", s:"mediacheck", ic:"mediacheck", t:["#1a2a3f","#0e4a52"] },
     { n:"Pollen",        d:"Daily pollen forecast with a morning push.",                           b:"beta", s:"pollen", ic:"pollen", t:["#1e5a34","#7bbf3a"] },
-    { n:"Intercom",      d:"Open the mic and everyone in the room hears you — even with their phone locked.", u:"https://intercom.dancykier.com", b:"beta", ic:"intercom", t:["#1e2a70","#5B7CFA"] },
+    { n:"Intercom",      d:"Open the mic; everyone in the room hears you, phone locked.", u:"https://intercom.dancykier.com", b:"beta", ic:"intercom", t:["#1e2a70","#5B7CFA"] },
     { n:"Wordbox",       d:"Word games you play with friends, at your own pace.",                  b:"beta", s:"wordbox", ic:"wordbox", t:["#8a5a12","#e0a72b"] },
   ]},
   { title:"Web & games", apps:[
@@ -302,19 +320,19 @@ const SECTIONS = [
     { n:"Hexicon",              d:"Spelling-bee style word hunt from a honeycomb.",          u:"https://spellingbee.dancykier.com", b:"live", ic:"hexicon", s:"hexicon" },
     { n:"Scramble",             d:"Find every word in the shaken grid.",                     u:"https://boggle.dancykier.com", b:"live", ic:"boggle", s:"scramble" },
     { n:"Anagrams",             d:"Unscramble against the clock.",                           u:"https://anagrams.dancykier.com", b:"live", ic:"anagrams", s:"anagrams" },
-    { n:"Intercom (web)",       d:"Join the same voice rooms from a browser — no app, no account.", u:"https://intercom.dancykier.com", b:"live", ic:"intercom", t:["#1e2a70","#5B7CFA"] },
-    { n:"Angry Men Rankings",   d:"Live humor standings for the Angry Men. Voting is by private link only.", u:"https://amhumor.dancykier.com", b:"live", ic:"angrymen", s:"angrymen" },
+    { n:"Intercom (web)",       d:"The same voice rooms, in a browser. No account.", u:"https://intercom.dancykier.com", b:"live", ic:"intercom", t:["#1e2a70","#5B7CFA"] },
+    { n:"Angry Men Rankings",   d:"Live humor standings. Voting is by private link only.", u:"https://amhumor.dancykier.com", b:"live", ic:"angrymen", s:"angrymen" },
   ]},
   { title:"Mac apps", apps:[
     { n:"Beam",              d:"A Spotlight-style search bar that also computes.",                        u:"https://beam.dancykier.com", b:"mac", ic:"beam", t:["#2a5b8a","#0f2136"], cta:"Download" },
-    { n:"TextLift",          d:"Global shortcut → drag a region → the text is on your clipboard.",        u:"https://github.com/moshed/TextLift", b:"mac", ic:"textlift", t:["#173a5b","#3b7fb0"], cta:"GitHub" },
+    { n:"TextLift",          d:"Drag a region on screen; the text lands on your clipboard.",        u:"https://github.com/moshed/TextLift", b:"mac", ic:"textlift", t:["#173a5b","#3b7fb0"], cta:"GitHub" },
     { n:"Clipboard History", d:"A fast, searchable panel of everything you've copied.",                   u:"https://github.com/moshed/Clipboard-Manager", b:"mac", ic:"clipboard", t:["#2a3340","#586c85"], cta:"GitHub" },
-    { n:"ClaudeBar",         d:"Menu-bar notifications for Claude Code; a click focuses the right terminal.", u:"https://github.com/moshed/ClaudeBar", b:"mac", ic:"claudebar", t:["#7a3a1e","#e07b3a"], cta:"GitHub" },
-    { n:"RunApp",            d:"One-tap launcher for my iOS apps with a live unified log viewer.",         u:"https://github.com/moshed/run-app", b:"mac", ic:"runapp", t:["#1e5a34","#3aa96a"], cta:"GitHub" },
-    { n:"ClipPiP",           d:"Float your clipboard in an always-on-top picture-in-picture panel.",      u:"https://github.com/moshed/ClipPiP", b:"mac", ic:"clippip", t:["#2c2f7a","#5a5ed6"], cta:"GitHub" },
+    { n:"ClaudeBar",         d:"Menu-bar notifications for Claude Code, one click to the terminal.", u:"https://github.com/moshed/ClaudeBar", b:"mac", ic:"claudebar", t:["#7a3a1e","#e07b3a"], cta:"GitHub" },
+    { n:"RunApp",            d:"One-tap launcher for my iOS apps, with a live log viewer.",         u:"https://github.com/moshed/run-app", b:"mac", ic:"runapp", t:["#1e5a34","#3aa96a"], cta:"GitHub" },
+    { n:"ClipPiP",           d:"Float your clipboard in an always-on-top PiP panel.",      u:"https://github.com/moshed/ClipPiP", b:"mac", ic:"clippip", t:["#2c2f7a","#5a5ed6"], cta:"GitHub" },
   ]},
   { title:"Twitter bots", apps:[
-    { n:"MLB Home Runs", h:"@mlbhomerbot", d:"Every homer with a 3D park card — and how many of the other 29 parks it clears.", u:"https://x.com/mlbhomerbot", b:"x", ic:"homerbot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
+    { n:"MLB Home Runs", h:"@mlbhomerbot", d:"Every homer, plus how many parks it would clear.", u:"https://x.com/mlbhomerbot", b:"x", ic:"homerbot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
     { n:"MLB Prospects", h:"@mlbprospectsbot", d:"Every call-up and MLB debut, the moment it's official.",        u:"https://x.com/mlbprospectsbot", b:"x", ic:"prospectsbot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
     { n:"MLB Bulk & Openers", h:"@MLBBulkbot", d:"Opener and bulk-pitcher calls before first pitch.",             u:"https://x.com/MLBBulkbot", b:"x", ic:"bulkbot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
     { n:"MLB Injuries", h:"@MLBInjuryBot", d:"Injuries and IL moves the moment they're reported.",                u:"https://x.com/MLBInjuryBot", b:"x", ic:"injurybot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
@@ -324,7 +342,7 @@ const SECTIONS = [
 
 const BADGE = { store:["b-store","App Store"], live:["b-live","Live"], mac:["b-mac","macOS"], beta:["b-beta","TestFlight"], x:["b-x","X"] };
 const PLAT  = { store:"iOS", live:"iOS", beta:"iOS", mac:"macOS", x:"X" };
-const V = 6;
+const V = 8;
 
 const secWrap = document.getElementById('sections');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -343,17 +361,26 @@ SECTIONS.forEach((sec, si)=>{
     el.className = 'card' + (linked?'':' nolink');
     if(linked){ el.href=a.u; el.target='_blank'; el.rel='noopener'; }
     el.dataset.k = (a.n+' '+a.d+' '+(a.h||'')+' '+sec.title).toLowerCase();
+    const icon = `icons/${a.ic}.png?v=${V}`;
+    const grad = `linear-gradient(150deg, ${a.t?a.t[0]:'#1e2a3b'}, ${a.t?a.t[1]:'#141c29'})`;
     const thumb = a.s
       ? `<div class="thumb"><span class="plat">${plat}</span><img class="shot" loading="lazy" src="thumbs/${a.s}.jpg?v=${V}" alt="${esc(a.n)} screenshot"></div>`
-      : `<div class="thumb tile${a.bot?' bot':''}" style="background:linear-gradient(150deg, ${a.t?a.t[0]:'#1e2a3b'}, ${a.t?a.t[1]:'#141c29'})"><span class="plat">${plat}</span><img class="bigic" loading="lazy" src="icons/${a.ic}.png?v=${V}" alt="${esc(a.n)} icon"></div>`;
+      : `<div class="thumb tile${a.bot?' bot':''}" style="background:${grad}">`+
+          `<img class="blurbg" aria-hidden="true" loading="lazy" src="${icon}" alt="">`+
+          `<span class="plat">${plat}</span>`+
+          `<img class="bigic" loading="lazy" src="${icon}" alt="${esc(a.n)} icon">`+
+        `</div>`;
     el.innerHTML = thumb +
       `<div class="meta">`+
-        `<img class="ic" loading="lazy" src="icons/${a.ic}.png?v=${V}" alt="">`+
+        `<img class="ic" loading="lazy" src="${icon}" alt="">`+
         `<div class="txt">`+
-          `<div class="name">${esc(a.n)}${a.h?` <span class="handle">${esc(a.h)}</span>`:''}</div>`+
+          `<div class="row1">`+
+            `<span class="name">${esc(a.n)}</span>`+
+            (a.h?`<span class="handle">${esc(a.h)}</span>`:'')+
+            `<span class="badge ${bc}">${esc(a.cta||bl)}</span>`+
+          `</div>`+
           `<p class="desc">${esc(a.d)}</p>`+
         `</div>`+
-        `<span class="badge ${bc}">${esc(a.cta||bl)}</span>`+
       `</div>`;
     grid.appendChild(el);
   });
