@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dancykier Projects</title>
 <meta name="description" content="Everything Moshe Dancykier has built — iOS apps, web games, Mac utilities and Twitter bots, in one place.">
-<meta name="theme-color" content="#0b1017" media="(prefers-color-scheme: dark)">
-<meta name="theme-color" content="#f6f7fa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#080b11" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="favicon.svg?v=1" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=1">
 <script>
-  // Set the theme before first paint so the page never flashes the wrong one.
+  // Apply the saved theme before first paint, so the page never flashes the wrong one.
   (function(){
     try{
       var t = localStorage.getItem('theme');
@@ -21,107 +21,52 @@
 <style>
   /* ---- Light palette (default) ---------------------------------------- */
   :root{
-    --bg:#f5f6f9;
-    --glow-1:rgba(64,120,255,.10);
-    --glow-2:rgba(20,180,130,.09);
-    --panel:#ffffff;
-    --panel-2:#f0f2f6;
-    --panel-3:#e7eaf1;
-    --border:#dfe3ec;
-    --border-soft:#e8ebf2;
-    --border-hover:#c3ccdd;
-    --text:#101827;
-    --dim:#5a6579;
-    --mute:#8b94a6;
-    --accent:#2f6bf0;
-    --accent-soft:rgba(47,107,240,.12);
-    --shadow:0 1px 2px rgba(16,24,39,.05), 0 8px 24px -12px rgba(16,24,39,.14);
-    --shadow-hover:0 2px 4px rgba(16,24,39,.06), 0 20px 40px -18px rgba(16,24,39,.28);
-    --plat-bg:rgba(255,255,255,.82);
-    --plat-fg:#3c4657;
-    --plat-br:rgba(16,24,39,.10);
-    --tile-mix:38%;
+    --bg:#fbfbfd; --panel:#fff; --panel-3:#e9ebf1;
+    --border:#e4e6ee; --border-hover:#c7cddc;
+    --text:#0d1220; --dim:#5c6478; --mute:#9098a8;
+    --accent:#2f6bf0; --accent-soft:rgba(47,107,240,.10);
+    --shadow:0 1px 2px rgba(13,18,32,.04), 0 10px 30px -16px rgba(13,18,32,.16);
+    --shadow-hi:0 2px 5px rgba(13,18,32,.06), 0 26px 50px -22px rgba(13,18,32,.32);
     --sans:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,sans-serif;
     --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
   }
   /* ---- Dark palette ---------------------------------------------------- */
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#0b1017;
-      --glow-1:rgba(110,163,255,.10);
-      --glow-2:rgba(72,213,151,.07);
-      --panel:#141c29;
-      --panel-2:#18212f;
-      --panel-3:#1e2a3b;
-      --border:#243247;
-      --border-soft:#1b2432;
-      --border-hover:#3a4d6b;
-      --text:#e8eef6;
-      --dim:#93a4ba;
-      --mute:#5f7089;
-      --accent:#6ea3ff;
-      --accent-soft:rgba(110,163,255,.16);
-      --shadow:0 1px 2px rgba(0,0,0,.30), 0 10px 26px -14px rgba(0,0,0,.70);
-      --shadow-hover:0 2px 6px rgba(0,0,0,.36), 0 24px 48px -20px rgba(0,0,0,.85);
-      --plat-bg:rgba(11,16,23,.62);
-      --plat-fg:#cdd8e6;
-      --plat-br:rgba(255,255,255,.09);
-      --tile-mix:0%;
-    }
-  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --bg:#080b11; --panel:#111823; --panel-3:#1c2634;
+    --border:#212c3d; --border-hover:#36485f;
+    --text:#eaf0f8; --dim:#94a3b8; --mute:#5f6d82;
+    --accent:#6ea3ff; --accent-soft:rgba(110,163,255,.14);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -18px rgba(0,0,0,.9);
+    --shadow-hi:0 2px 6px rgba(0,0,0,.5), 0 30px 60px -26px rgba(0,0,0,1);
+  }}
   :root[data-theme="dark"]{
-    --bg:#0b1017;
-    --glow-1:rgba(110,163,255,.10);
-    --glow-2:rgba(72,213,151,.07);
-    --panel:#141c29;
-    --panel-2:#18212f;
-    --panel-3:#1e2a3b;
-    --border:#243247;
-    --border-soft:#1b2432;
-    --border-hover:#3a4d6b;
-    --text:#e8eef6;
-    --dim:#93a4ba;
-    --mute:#5f7089;
-    --accent:#6ea3ff;
-    --accent-soft:rgba(110,163,255,.16);
-    --shadow:0 1px 2px rgba(0,0,0,.30), 0 10px 26px -14px rgba(0,0,0,.70);
-    --shadow-hover:0 2px 6px rgba(0,0,0,.36), 0 24px 48px -20px rgba(0,0,0,.85);
-    --plat-bg:rgba(11,16,23,.62);
-    --plat-fg:#cdd8e6;
-    --plat-br:rgba(255,255,255,.09);
-    --tile-mix:0%;
+    --bg:#080b11; --panel:#111823; --panel-3:#1c2634;
+    --border:#212c3d; --border-hover:#36485f;
+    --text:#eaf0f8; --dim:#94a3b8; --mute:#5f6d82;
+    --accent:#6ea3ff; --accent-soft:rgba(110,163,255,.14);
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -18px rgba(0,0,0,.9);
+    --shadow-hi:0 2px 6px rgba(0,0,0,.5), 0 30px 60px -26px rgba(0,0,0,1);
   }
 
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;
-    background:
-      radial-gradient(1100px 620px at 78% -10%, var(--glow-1), transparent 62%),
-      radial-gradient(900px 520px at 6% 2%, var(--glow-2), transparent 58%),
-      var(--bg);
-    background-attachment:fixed;
-    color:var(--text); font:15px/1.5 var(--sans); -webkit-font-smoothing:antialiased; min-height:100vh;
-  }
-  .wrap{max-width:1200px; margin:0 auto; padding:0 22px 90px}
+  body{margin:0; background:var(--bg); color:var(--text);
+    font:15px/1.55 var(--sans); -webkit-font-smoothing:antialiased; min-height:100vh}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 26px 110px}
 
   /* ---- Header ---------------------------------------------------------- */
-  header.top{padding:52px 0 6px; display:flex; align-items:flex-start; gap:20px}
+  header.top{padding:80px 0 0; display:flex; align-items:flex-start; gap:24px}
   .head-txt{flex:1; min-width:0}
-  .eyebrow{display:inline-flex; align-items:center; gap:7px; color:var(--accent);
-    font:600 11px/1 var(--mono); letter-spacing:.14em; text-transform:uppercase; margin:0 0 15px}
-  .eyebrow::before{content:""; width:6px; height:6px; border-radius:50%; background:currentColor;
-    box-shadow:0 0 0 4px var(--accent-soft)}
-  h1{margin:0; font:800 clamp(31px,5.2vw,50px)/1.02 var(--sans); letter-spacing:-.03em}
-  h1 .dot{color:var(--accent)}
-  .lede{color:var(--dim); font-size:16px; margin:14px 0 0; max-width:58ch}
-  .lede b{color:var(--text); font-weight:600}
-
-  .theme-btn{flex:0 0 auto; margin-top:4px; width:40px; height:40px; display:grid; place-items:center;
-    border-radius:12px; border:1px solid var(--border); background:var(--panel); color:var(--dim);
-    cursor:pointer; box-shadow:var(--shadow); transition:color .15s, border-color .15s, transform .15s}
-  .theme-btn:hover{color:var(--text); border-color:var(--border-hover); transform:translateY(-1px)}
-  .theme-btn svg{width:19px; height:19px; display:none}
+  .eyebrow{color:var(--mute); font:600 11px/1 var(--mono); letter-spacing:.18em;
+    text-transform:uppercase; margin:0 0 18px}
+  h1{margin:0; font:700 clamp(34px,5vw,52px)/1.05 var(--sans); letter-spacing:-.035em}
+  .lede{color:var(--dim); font-size:16.5px; margin:18px 0 0; max-width:52ch}
+  .theme-btn{flex:0 0 auto; margin-top:4px; width:38px; height:38px; display:grid;
+    place-items:center; border-radius:50%; border:1px solid var(--border);
+    background:var(--panel); color:var(--dim); cursor:pointer;
+    transition:color .15s, border-color .15s}
+  .theme-btn:hover{color:var(--text); border-color:var(--border-hover)}
+  .theme-btn svg{width:17px; height:17px; display:none}
   .theme-btn .i-sun{display:block}
   :root[data-theme="dark"] .theme-btn .i-sun{display:none}
   :root[data-theme="dark"] .theme-btn .i-moon{display:block}
@@ -130,133 +75,78 @@
     :root:not([data-theme="light"]) .theme-btn .i-moon{display:block}
   }
 
-  /* ---- Search + filters ------------------------------------------------ */
-  .toolbar{position:sticky; top:0; z-index:20; margin:26px 0 2px; padding:14px 0 12px;
-    background:linear-gradient(var(--bg) 70%, transparent); backdrop-filter:saturate(150%) blur(6px)}
-  .search{position:relative; display:flex; align-items:center}
-  .search > svg{position:absolute; left:16px; width:18px; height:18px; color:var(--mute); pointer-events:none}
-  #q{width:100%; padding:14px 16px 14px 46px; font:500 15px/1 var(--sans); color:var(--text);
-     background:var(--panel); border:1px solid var(--border); border-radius:13px; outline:none;
-     box-shadow:var(--shadow); transition:border-color .15s, box-shadow .15s}
+  /* ---- Search ---------------------------------------------------------- */
+  .search{position:relative; margin:40px 0 0; max-width:400px}
+  #q{width:100%; padding:12px 15px 12px 40px; font:500 14.5px/1 var(--sans); color:var(--text);
+    background:var(--panel); border:1px solid var(--border); border-radius:11px; outline:none;
+    transition:border-color .15s, box-shadow .15s}
   #q::placeholder{color:var(--mute)}
   #q:focus{border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft)}
-  .kbd{position:absolute; right:14px; color:var(--mute); font:600 11px/1 var(--mono);
-    border:1px solid var(--border); border-radius:5px; padding:4px 6px; pointer-events:none}
-  #q:focus ~ .kbd, #q:not(:placeholder-shown) ~ .kbd{opacity:0}
-
-  .pills{display:flex; flex-wrap:wrap; gap:7px; margin-top:11px}
-  .pill{font:600 12px/1 var(--sans); letter-spacing:-.005em; color:var(--dim); background:var(--panel);
-    border:1px solid var(--border); border-radius:999px; padding:7px 13px; cursor:pointer;
-    transition:color .13s, border-color .13s, background .13s}
-  .pill:hover{color:var(--text); border-color:var(--border-hover)}
-  .pill[aria-pressed="true"]{color:#fff; background:var(--accent); border-color:var(--accent)}
-  .pill .n{opacity:.6; margin-left:5px; font:600 11px/1 var(--mono)}
+  .search > svg{position:absolute; left:13px; top:12px; width:16px; height:16px;
+    color:var(--mute); pointer-events:none}
 
   /* ---- Sections -------------------------------------------------------- */
-  section{margin-top:34px; scroll-margin-top:130px}
-  .sec-head{display:flex; align-items:baseline; gap:10px; margin:0 2px 15px; padding-bottom:12px;
-    border-bottom:1px solid var(--border-soft)}
-  .sec-head h2{margin:0; font:700 15px/1 var(--sans); letter-spacing:-.015em}
-  .sec-head .count{color:var(--mute); font:600 11px/1 var(--mono)}
+  section{margin-top:52px}
+  .sec-head{display:flex; align-items:baseline; gap:12px; margin:0 0 16px}
+  .sec-head h2{margin:0; font:600 13px/1 var(--mono); letter-spacing:.13em;
+    text-transform:uppercase; color:var(--mute)}
+  .sec-head .rule{flex:1; height:1px; background:var(--border)}
 
-  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(278px,1fr)); gap:16px}
+  /* ---- Card: one shape for every app ----------------------------------- */
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(430px,1fr)); gap:10px}
+  .c{position:relative; display:flex; align-items:center; gap:14px; padding:14px 16px;
+    min-height:74px; text-decoration:none; color:inherit; border-radius:14px;
+    background:var(--panel); border:1px solid var(--border); box-shadow:var(--shadow);
+    transition:transform .15s, border-color .15s, box-shadow .15s}
+  a.c:hover{transform:translateY(-2px); border-color:var(--border-hover); box-shadow:var(--shadow-hi)}
+  a.c:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+  .c .ic{flex:0 0 44px; width:44px; height:44px; border-radius:11px; object-fit:cover;
+    background:var(--panel-3); box-shadow:0 2px 8px rgba(13,18,32,.14)}
+  .c.bot .ic{border-radius:50%}
+  .c .txt{flex:1; min-width:0}
+  .c .nm{display:flex; align-items:center; gap:8px; font:650 15px/1.3 var(--sans);
+    letter-spacing:-.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .c .hd{color:var(--mute); font:500 11px/1 var(--mono); flex:0 0 auto}
+  .c .ds{color:var(--dim); font-size:13px; margin:2px 0 0;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
 
-  /* ---- Card ------------------------------------------------------------ */
-  .card{position:relative; display:flex; flex-direction:column; text-decoration:none; color:inherit;
-    background:var(--panel); border:1px solid var(--border); border-radius:17px; overflow:hidden;
-    box-shadow:var(--shadow);
-    transition:transform .16s ease, border-color .16s ease, box-shadow .16s ease}
-  a.card:hover{transform:translateY(-4px); border-color:var(--border-hover); box-shadow:var(--shadow-hover)}
-  a.card:active{transform:translateY(-1px)}
-  a.card:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
-  .card.nolink{cursor:default}
-
-  /* Art band. Screenshots crop tight so the phone fills the frame; icon-only
-     apps get a blurred blow-up of their own icon behind the crisp one. */
-  .thumb{position:relative; aspect-ratio:16/9; width:100%; overflow:hidden; background:var(--panel-3);
-    border-bottom:1px solid var(--border-soft)}
-  .thumb img.shot{width:100%; height:100%; object-fit:cover; object-position:center 22%; display:block;
-    transition:transform .4s ease}
-  a.card:hover .thumb img.shot{transform:scale(1.05)}
-
-  .thumb.tile{display:grid; place-items:center}
-  .thumb.tile .blurbg{position:absolute; left:-25%; top:-25%; width:150%; height:150%;
-    object-fit:cover; filter:blur(32px) saturate(1.7); opacity:.82; transform:scale(1.15)}
-  .thumb.tile::after{content:""; position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(155deg, rgba(255,255,255,.14), rgba(0,0,0,.34) 72%)}
-  .thumb.tile img.bigic{position:relative; z-index:1; width:74px; height:74px; border-radius:18px;
-    box-shadow:0 14px 30px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.10);
-    transition:transform .4s ease}
-  a.card:hover .thumb.tile img.bigic{transform:scale(1.07)}
-  .thumb.tile.bot img.bigic{width:92px; height:92px; border-radius:50%; border:3px solid rgba(255,255,255,.22)}
-  /* Bot avatars are mostly white, so a plain blur greys the tile out. Dim it hard
-     and let the navy gradient underneath carry the colour. */
-  .thumb.tile.bot .blurbg{filter:blur(40px) saturate(2.4) brightness(.5); opacity:.45}
-  .thumb.tile.bot::after{background:linear-gradient(155deg, rgba(90,140,210,.16), rgba(4,8,14,.62) 78%)}
-
-  .thumb .plat{position:absolute; z-index:2; top:9px; left:9px; font:600 9.5px/1 var(--mono);
-    letter-spacing:.05em; color:var(--plat-fg); background:var(--plat-bg); backdrop-filter:blur(4px);
-    padding:5px 8px; border-radius:7px; border:1px solid var(--plat-br)}
-  .thumb.tile .plat{color:#e6edf6; background:rgba(8,12,18,.42); border-color:rgba(255,255,255,.16)}
-
-  /* Meta. Every card is the same height: one title line, two description lines. */
-  .meta{padding:12px 14px 14px; display:flex; align-items:flex-start; gap:11px}
-  .meta .ic{flex:0 0 34px; width:34px; height:34px; border-radius:9px; object-fit:cover;
-    background:var(--panel-3); border:1px solid var(--border-soft)}
-  .meta .txt{min-width:0; flex:1}
-  .row1{display:flex; align-items:center; gap:8px; min-width:0}
-  .name{font:700 14.5px/1.25 var(--sans); letter-spacing:-.015em; white-space:nowrap;
-    overflow:hidden; text-overflow:ellipsis}
-  .desc{color:var(--dim); font-size:12.5px; line-height:1.42; margin:4px 0 0;
-    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
-    min-height:2.84em}
-
-  .badge{flex:0 0 auto; margin-left:auto; font:600 9px/1 var(--mono); letter-spacing:.05em;
-    text-transform:uppercase; padding:5px 7px; border-radius:6px; border:1px solid transparent;
-    white-space:nowrap}
-
-  .b-store{color:#1b47a8; background:rgba(47,107,240,.10); border-color:rgba(47,107,240,.26)}
-  .b-live {color:#0a6b46; background:rgba(20,170,120,.11); border-color:rgba(20,170,120,.28)}
-  .b-mac  {color:#6b2f8a; background:rgba(150,80,190,.10); border-color:rgba(150,80,190,.26)}
-  .b-beta {color:#8a5411; background:rgba(230,150,40,.12); border-color:rgba(230,150,40,.30)}
-  .b-x    {color:#3a4657; background:rgba(90,120,150,.11); border-color:rgba(90,120,150,.28)}
-  :root[data-theme="dark"] .b-store{color:#bcd4ff; background:rgba(110,163,255,.13); border-color:rgba(110,163,255,.28)}
-  :root[data-theme="dark"] .b-live {color:#8ff0c4; background:rgba(72,213,151,.12); border-color:rgba(72,213,151,.28)}
-  :root[data-theme="dark"] .b-mac  {color:#e9d6ff; background:rgba(179,132,181,.14); border-color:rgba(179,132,181,.30)}
-  :root[data-theme="dark"] .b-beta {color:#ffd9a6; background:rgba(255,180,74,.12); border-color:rgba(255,180,74,.30)}
-  :root[data-theme="dark"] .b-x    {color:#cfe0ee; background:rgba(120,150,180,.14); border-color:rgba(150,175,200,.30)}
+  .badge{flex:0 0 auto; font:600 9px/1 var(--mono); letter-spacing:.06em; text-transform:uppercase;
+    padding:5px 7px; border-radius:6px; border:1px solid transparent; white-space:nowrap}
+  .b-store{color:#1b47a8; background:rgba(47,107,240,.10); border-color:rgba(47,107,240,.24)}
+  .b-live {color:#0a6b46; background:rgba(20,170,120,.11); border-color:rgba(20,170,120,.26)}
+  .b-mac  {color:#6b2f8a; background:rgba(150,80,190,.10); border-color:rgba(150,80,190,.24)}
+  .b-beta {color:#8a5411; background:rgba(230,150,40,.12); border-color:rgba(230,150,40,.28)}
+  .b-x    {color:#3a4657; background:rgba(90,120,150,.11); border-color:rgba(90,120,150,.26)}
+  :root[data-theme="dark"] .b-store{color:#bcd4ff;background:rgba(110,163,255,.13);border-color:rgba(110,163,255,.26)}
+  :root[data-theme="dark"] .b-live {color:#8ff0c4;background:rgba(72,213,151,.12);border-color:rgba(72,213,151,.26)}
+  :root[data-theme="dark"] .b-mac  {color:#e9d6ff;background:rgba(179,132,181,.14);border-color:rgba(179,132,181,.28)}
+  :root[data-theme="dark"] .b-beta {color:#ffd9a6;background:rgba(255,180,74,.12);border-color:rgba(255,180,74,.28)}
+  :root[data-theme="dark"] .b-x    {color:#cfe0ee;background:rgba(120,150,180,.14);border-color:rgba(150,175,200,.28)}
   @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]) .b-store{color:#bcd4ff; background:rgba(110,163,255,.13); border-color:rgba(110,163,255,.28)}
-    :root:not([data-theme="light"]) .b-live {color:#8ff0c4; background:rgba(72,213,151,.12); border-color:rgba(72,213,151,.28)}
-    :root:not([data-theme="light"]) .b-mac  {color:#e9d6ff; background:rgba(179,132,181,.14); border-color:rgba(179,132,181,.30)}
-    :root:not([data-theme="light"]) .b-beta {color:#ffd9a6; background:rgba(255,180,74,.12); border-color:rgba(255,180,74,.30)}
-    :root:not([data-theme="light"]) .b-x    {color:#cfe0ee; background:rgba(120,150,180,.14); border-color:rgba(150,175,200,.30)}
+    :root:not([data-theme="light"]) .b-store{color:#bcd4ff;background:rgba(110,163,255,.13);border-color:rgba(110,163,255,.26)}
+    :root:not([data-theme="light"]) .b-live {color:#8ff0c4;background:rgba(72,213,151,.12);border-color:rgba(72,213,151,.26)}
+    :root:not([data-theme="light"]) .b-mac  {color:#e9d6ff;background:rgba(179,132,181,.14);border-color:rgba(179,132,181,.28)}
+    :root:not([data-theme="light"]) .b-beta {color:#ffd9a6;background:rgba(255,180,74,.12);border-color:rgba(255,180,74,.28)}
+    :root:not([data-theme="light"]) .b-x    {color:#cfe0ee;background:rgba(120,150,180,.14);border-color:rgba(150,175,200,.28)}
   }
-  .handle{color:var(--mute); font:600 11px/1 var(--mono); flex:0 0 auto}
-
-  .empty{display:none; color:var(--mute); font-size:14px; padding:28px 2px}
-  section.hidden{display:none}
 
   /* ---- Footer ---------------------------------------------------------- */
-  .sitelinks{margin-top:48px; padding-top:22px; border-top:1px solid var(--border-soft)}
-  .sitelinks h2{font-size:12px; font-weight:700; color:var(--mute); text-transform:uppercase;
-    letter-spacing:.09em; margin:0 0 12px}
+  .sitelinks{margin-top:60px; padding-top:22px; border-top:1px solid var(--border)}
+  .sitelinks h2{font:600 11px/1 var(--mono); letter-spacing:.15em; text-transform:uppercase;
+    color:var(--mute); margin:0 0 12px}
   .sitelinks ul{list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:9px 18px}
   .sitelinks a{color:var(--dim); text-decoration:none; font-size:13.5px}
   .sitelinks a:hover{color:var(--accent); text-decoration:underline}
-  footer{margin-top:40px; padding-top:22px; border-top:1px solid var(--border-soft);
-    color:var(--mute); font-size:12.5px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px}
+  footer{margin-top:40px; padding-top:22px; border-top:1px solid var(--border);
+    color:var(--mute); font-size:13px; display:flex; justify-content:space-between;
+    flex-wrap:wrap; gap:10px}
   footer a{color:var(--dim); text-decoration:none}
   footer a:hover{color:var(--accent)}
 
-  @media (max-width:560px){
-    header.top{padding:36px 0 4px}
-    .grid{grid-template-columns:1fr}
-    .kbd{display:none}
-  }
-  @media (prefers-reduced-motion: reduce){
-    *{transition:none !important; animation:none !important}
-  }
+  .empty{display:none; color:var(--mute); padding:24px 0}
+  section.hidden{display:none}
+  @media (max-width:560px){ header.top{padding-top:52px} .grid{grid-template-columns:1fr} }
+  @media (prefers-reduced-motion: reduce){ *{transition:none !important} }
 </style>
 </head>
 <body>
@@ -265,8 +155,8 @@
   <header class="top">
     <div class="head-txt">
       <p class="eyebrow">dancykier.com</p>
-      <h1>Everything I've built<span class="dot">.</span></h1>
-      <p class="lede">A running index of my <b>iOS apps</b>, <b>web games</b>, <b>Mac utilities</b> and <b>Twitter bots</b>. Tap any card to open it.</p>
+      <h1>Everything I've built.</h1>
+      <p class="lede">iOS apps, web games, Mac utilities and a few Twitter bots — twenty-nine of them. Tap anything to open it.</p>
     </div>
     <button class="theme-btn" id="theme" type="button" aria-label="Switch between light and dark mode" title="Switch theme">
       <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4"/></svg>
@@ -274,17 +164,13 @@
     </button>
   </header>
 
-  <div class="toolbar">
-    <div class="search">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      <input id="q" type="search" placeholder="Filter apps…" autocomplete="off" spellcheck="false" aria-label="Filter apps">
-      <span class="kbd">/</span>
-    </div>
-    <div class="pills" id="pills" role="group" aria-label="Filter by category"></div>
+  <div class="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    <input id="q" type="search" placeholder="Filter…" autocomplete="off" spellcheck="false" aria-label="Filter apps">
   </div>
 
   <main id="sections"></main>
-  <p class="empty" id="empty">No apps match that.</p>
+  <p class="empty" id="empty">Nothing matches that.</p>
 
   <nav class="sitelinks" aria-label="All projects">
     <h2>All projects</h2>
@@ -298,109 +184,80 @@
 </div>
 
 <script>
-// ic: icon slug (icons/<ic>.png, always present). s: screenshot slug (thumbs/<s>.jpg) when one exists.
-// t: [c1,c2] tile gradient used behind the big icon when there is no screenshot.
+// The catalog. Add an app by adding one object here — there is no build step.
+// n=name, d=description, u=url, b=badge key, ic=icon slug (icons/<ic>.png),
+// h=@handle, bot=true for a round avatar, cta=custom badge label.
 const SECTIONS = [
   { title:"iOS apps", apps:[
-    { n:"Jukebox",       d:"Guests vote on the party playlist. No code to join.", u:"https://jukebox.dancykier.com", b:"store", ic:"jukebox", s:"jukebox" },
-    { n:"Stitch",        d:"Combine iPhone screenshots into one long, seam-matched image.",       u:"https://stitch.dancykier.com",  b:"store", ic:"stitch", s:"stitch" },
-    { n:"Sports Alerts", d:"Real-time baseball prospect & call-up notifications.",                 u:"https://sportsalerts.dancykier.com", b:"live", ic:"sportsalerts", s:"sportsalerts" },
-    { n:"Bus Tracker",   d:"Live bus arrival times, no clutter.",                                  u:"https://bustracker.dancykier.com", b:"live", ic:"bustracker", s:"bustracker" },
-    { n:"GroupSnap",     d:"One shared camera roll for everyone at your event.",                   u:"https://groupsnap.dancykier.com", b:"live", s:"groupsnap", ic:"groupsnap", t:["#3a2c96","#7a2f6a"] },
-    { n:"Dish It Out",   d:"Rate the dish, not the restaurant. Notes you share with friends.", b:"beta", ic:"dishitout", t:["#c2562c","#7d2f14"] },
-    { n:"Media Check",   d:"Is this movie or show OK for my kid? Five severity scores.", b:"beta", s:"mediacheck", ic:"mediacheck", t:["#1a2a3f","#0e4a52"] },
-    { n:"Pollenary",     d:"Daily pollen forecast with a morning push.",                           u:"https://pollenary.dancykier.com", b:"store", s:"pollen", ic:"pollen", t:["#1e5a34","#7bbf3a"] },
-    { n:"Intercom",      d:"Open the mic; everyone in the room hears you, phone locked.", u:"https://intercom.dancykier.com", b:"beta", ic:"intercom", t:["#1e2a70","#5B7CFA"] },
-    { n:"Wordbox",       d:"Word games you play with friends, at your own pace.",                  b:"beta", s:"wordbox", ic:"wordbox", t:["#8a5a12","#e0a72b"] },
+    { n:"Jukebox",       d:"Guests vote on the party playlist. No code to join.", u:"https://jukebox.dancykier.com", b:"store", ic:"jukebox" },
+    { n:"Stitch",        d:"Combine iPhone screenshots into one long, seam-matched image.", u:"https://stitch.dancykier.com", b:"store", ic:"stitch" },
+    { n:"Pollenary",     d:"Daily pollen forecast with a morning push.", u:"https://pollenary.dancykier.com", b:"store", ic:"pollen" },
+    { n:"Sports Alerts", d:"Real-time baseball prospect & call-up notifications.", u:"https://sportsalerts.dancykier.com", b:"live", ic:"sportsalerts" },
+    { n:"Bus Tracker",   d:"Live bus arrival times, no clutter.", u:"https://bustracker.dancykier.com", b:"live", ic:"bustracker" },
+    { n:"GroupSnap",     d:"One shared camera roll for everyone at your event.", u:"https://groupsnap.dancykier.com", b:"live", ic:"groupsnap" },
+    { n:"Dish It Out",   d:"Rate the dish, not the restaurant. Notes you share with friends.", b:"beta", ic:"dishitout" },
+    { n:"Media Check",   d:"Is this movie or show OK for my kid? Five severity scores.", b:"beta", ic:"mediacheck" },
+    { n:"Intercom",      d:"Open the mic; everyone in the room hears you, phone locked.", u:"https://intercom.dancykier.com", b:"beta", ic:"intercom" },
+    { n:"Wordbox",       d:"Word games you play with friends, at your own pace.", b:"beta", ic:"wordbox" },
   ]},
   { title:"Web & games", apps:[
-    { n:"Pinpoint",             d:"Read a clue, drop a pin — unlimited geography practice.", u:"https://geo.dancykier.com", b:"live", ic:"pinpoint", s:"pinpoint" },
-    { n:"Chobes Roto Inspector",d:"Live monthly roto standings for a fantasy league.",       u:"https://chobes.dancykier.com", b:"live", ic:"chobes", s:"chobes" },
-    { n:"Games",                d:"A hub of quick browser games.",                           u:"https://games.dancykier.com", b:"live", ic:"games", s:"games" },
-    { n:"Hexicon",              d:"Spelling-bee style word hunt from a honeycomb.",          u:"https://spellingbee.dancykier.com", b:"live", ic:"hexicon", s:"hexicon" },
-    { n:"Scramble",             d:"Find every word in the shaken grid.",                     u:"https://boggle.dancykier.com", b:"live", ic:"boggle", s:"scramble" },
-    { n:"Anagrams",             d:"Unscramble against the clock.",                           u:"https://anagrams.dancykier.com", b:"live", ic:"anagrams", s:"anagrams" },
-    { n:"Intercom (web)",       d:"The same voice rooms, in a browser. No account.", u:"https://intercom.dancykier.com", b:"live", ic:"intercom", t:["#1e2a70","#5B7CFA"] },
-    { n:"Angry Men Rankings",   d:"Live humor standings. Voting is by private link only.", u:"https://amhumor.dancykier.com", b:"live", ic:"angrymen", s:"angrymen" },
+    { n:"Pinpoint",             d:"Read a clue, drop a pin — unlimited geography practice.", u:"https://geo.dancykier.com", b:"live", ic:"pinpoint" },
+    { n:"Chobes Roto Inspector",d:"Live monthly roto standings for a fantasy league.", u:"https://chobes.dancykier.com", b:"live", ic:"chobes" },
+    { n:"Games",                d:"A hub of quick browser games.", u:"https://games.dancykier.com", b:"live", ic:"games" },
+    { n:"Hexicon",              d:"Spelling-bee style word hunt from a honeycomb.", u:"https://spellingbee.dancykier.com", b:"live", ic:"hexicon" },
+    { n:"Scramble",             d:"Find every word in the shaken grid.", u:"https://boggle.dancykier.com", b:"live", ic:"boggle" },
+    { n:"Anagrams",             d:"Unscramble against the clock.", u:"https://anagrams.dancykier.com", b:"live", ic:"anagrams" },
+    { n:"Intercom (web)",       d:"The same voice rooms, in a browser. No account.", u:"https://intercom.dancykier.com", b:"live", ic:"intercom" },
+    { n:"Angry Men Rankings",   d:"Live humor standings. Voting is by private link only.", u:"https://amhumor.dancykier.com", b:"live", ic:"angrymen" },
   ]},
   { title:"Mac apps", apps:[
-    { n:"Beam",              d:"A Spotlight-style search bar that also computes.",                        u:"https://beam.dancykier.com", b:"mac", ic:"beam", t:["#2a5b8a","#0f2136"], cta:"Download" },
-    { n:"TextLift",          d:"Drag a region on screen; the text lands on your clipboard.",        u:"https://github.com/moshed/TextLift", b:"mac", ic:"textlift", t:["#173a5b","#3b7fb0"], cta:"GitHub" },
-    { n:"Clipboard History", d:"A fast, searchable panel of everything you've copied.",                   u:"https://github.com/moshed/Clipboard-Manager", b:"mac", ic:"clipboard", t:["#2a3340","#586c85"], cta:"GitHub" },
-    { n:"ClaudeBar",         d:"Menu-bar notifications for Claude Code, one click to the terminal.", u:"https://github.com/moshed/ClaudeBar", b:"mac", ic:"claudebar", t:["#7a3a1e","#e07b3a"], cta:"GitHub" },
-    { n:"RunApp",            d:"One-tap launcher for my iOS apps, with a live log viewer.",         u:"https://github.com/moshed/run-app", b:"mac", ic:"runapp", t:["#1e5a34","#3aa96a"], cta:"GitHub" },
-    { n:"ClipPiP",           d:"Float your clipboard in an always-on-top PiP panel.",      u:"https://github.com/moshed/ClipPiP", b:"mac", ic:"clippip", t:["#2c2f7a","#5a5ed6"], cta:"GitHub" },
+    { n:"Beam",              d:"A Spotlight-style search bar that also computes.", u:"https://beam.dancykier.com", b:"mac", ic:"beam", cta:"Download" },
+    { n:"TextLift",          d:"Drag a region on screen; the text lands on your clipboard.", u:"https://github.com/moshed/TextLift", b:"mac", ic:"textlift", cta:"GitHub" },
+    { n:"Clipboard History", d:"A fast, searchable panel of everything you've copied.", u:"https://github.com/moshed/Clipboard-Manager", b:"mac", ic:"clipboard", cta:"GitHub" },
+    { n:"ClaudeBar",         d:"Menu-bar notifications for Claude Code, one click to the terminal.", u:"https://github.com/moshed/ClaudeBar", b:"mac", ic:"claudebar", cta:"GitHub" },
+    { n:"RunApp",            d:"One-tap launcher for my iOS apps, with a live log viewer.", u:"https://github.com/moshed/run-app", b:"mac", ic:"runapp", cta:"GitHub" },
+    { n:"ClipPiP",           d:"Float your clipboard in an always-on-top PiP panel.", u:"https://github.com/moshed/ClipPiP", b:"mac", ic:"clippip", cta:"GitHub" },
   ]},
   { title:"Twitter bots", apps:[
-    { n:"MLB Home Runs", h:"@mlbhomerbot", d:"Every homer, plus how many parks it would clear.", u:"https://x.com/mlbhomerbot", b:"x", ic:"homerbot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
-    { n:"MLB Prospects", h:"@mlbprospectsbot", d:"Every call-up and MLB debut, the moment it's official.",        u:"https://x.com/mlbprospectsbot", b:"x", ic:"prospectsbot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
-    { n:"MLB Bulk & Openers", h:"@MLBBulkbot", d:"Opener and bulk-pitcher calls before first pitch.",             u:"https://x.com/MLBBulkbot", b:"x", ic:"bulkbot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
-    { n:"MLB Injuries", h:"@MLBInjuryBot", d:"Injuries and IL moves the moment they're reported.",                u:"https://x.com/MLBInjuryBot", b:"x", ic:"injurybot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
-    { n:"MLB Closers", h:"@mlbclosersbot", d:"Save situations and closer role changes as they shift.",           u:"https://x.com/mlbclosersbot", b:"x", ic:"closersbot", bot:true, t:["#1b2f43","#0c141d"], cta:"Follow" },
+    { n:"MLB Home Runs",      h:"@mlbhomerbot",      d:"Every homer, plus how many parks it would clear.", u:"https://x.com/mlbhomerbot", b:"x", ic:"homerbot", bot:true, cta:"Follow" },
+    { n:"MLB Prospects",      h:"@mlbprospectsbot",  d:"Every call-up and MLB debut, the moment it's official.", u:"https://x.com/mlbprospectsbot", b:"x", ic:"prospectsbot", bot:true, cta:"Follow" },
+    { n:"MLB Bulk & Openers", h:"@MLBBulkbot",       d:"Opener and bulk-pitcher calls before first pitch.", u:"https://x.com/MLBBulkbot", b:"x", ic:"bulkbot", bot:true, cta:"Follow" },
+    { n:"MLB Injuries",       h:"@MLBInjuryBot",     d:"Injuries and IL moves the moment they're reported.", u:"https://x.com/MLBInjuryBot", b:"x", ic:"injurybot", bot:true, cta:"Follow" },
+    { n:"MLB Closers",        h:"@mlbclosersbot",    d:"Save situations and closer role changes as they shift.", u:"https://x.com/mlbclosersbot", b:"x", ic:"closersbot", bot:true, cta:"Follow" },
   ]},
 ];
 
-const BADGE = { store:["b-store","App Store"], live:["b-live","Live"], mac:["b-mac","macOS"], beta:["b-beta","TestFlight"], x:["b-x","X"] };
-const PLAT  = { store:"iOS", live:"iOS", beta:"iOS", mac:"macOS", x:"X" };
-const V = 8;
-
-const secWrap = document.getElementById('sections');
+const BADGE = { store:["b-store","App Store"], live:["b-live","Live"], mac:["b-mac","macOS"],
+                beta:["b-beta","TestFlight"], x:["b-x","X"] };
+const V = 9;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-SECTIONS.forEach((sec, si)=>{
-  const isWeb = sec.title.startsWith("Web");
+const wrap = document.getElementById('sections');
+SECTIONS.forEach(sec=>{
   const s = document.createElement('section');
-  s.dataset.sec = si;
-  s.innerHTML = `<div class="sec-head"><h2>${esc(sec.title)}</h2><span class="count">${sec.apps.length}</span></div>`;
-  const grid = document.createElement('div'); grid.className='grid';
+  s.innerHTML = `<div class="sec-head"><h2>${esc(sec.title)}</h2><span class="rule"></span></div>`;
+  const g = document.createElement('div'); g.className = 'grid';
   sec.apps.forEach(a=>{
     const [bc,bl] = BADGE[a.b] || BADGE.live;
     const linked = !!a.u;
-    const plat = isWeb ? "Web" : PLAT[a.b];
-    const el = document.createElement(linked?'a':'div');
-    el.className = 'card' + (linked?'':' nolink');
-    if(linked){ el.href=a.u; el.target='_blank'; el.rel='noopener'; }
-    el.dataset.k = (a.n+' '+a.d+' '+(a.h||'')+' '+sec.title).toLowerCase();
-    const icon = `icons/${a.ic}.png?v=${V}`;
-    const grad = `linear-gradient(150deg, ${a.t?a.t[0]:'#1e2a3b'}, ${a.t?a.t[1]:'#141c29'})`;
-    const thumb = a.s
-      ? `<div class="thumb"><span class="plat">${plat}</span><img class="shot" loading="lazy" src="thumbs/${a.s}.jpg?v=${V}" alt="${esc(a.n)} screenshot"></div>`
-      : `<div class="thumb tile${a.bot?' bot':''}" style="background:${grad}">`+
-          `<img class="blurbg" aria-hidden="true" loading="lazy" src="${icon}" alt="">`+
-          `<span class="plat">${plat}</span>`+
-          `<img class="bigic" loading="lazy" src="${icon}" alt="${esc(a.n)} icon">`+
-        `</div>`;
-    el.innerHTML = thumb +
-      `<div class="meta">`+
-        `<img class="ic" loading="lazy" src="${icon}" alt="">`+
-        `<div class="txt">`+
-          `<div class="row1">`+
-            `<span class="name">${esc(a.n)}</span>`+
-            (a.h?`<span class="handle">${esc(a.h)}</span>`:'')+
-            `<span class="badge ${bc}">${esc(a.cta||bl)}</span>`+
-          `</div>`+
-          `<p class="desc">${esc(a.d)}</p>`+
-        `</div>`+
-      `</div>`;
-    grid.appendChild(el);
+    const el = document.createElement(linked ? 'a' : 'div');
+    el.className = 'c' + (a.bot ? ' bot' : '');
+    if(linked){ el.href = a.u; el.target = '_blank'; el.rel = 'noopener'; }
+    el.dataset.k = (a.n + ' ' + a.d + ' ' + (a.h||'') + ' ' + sec.title).toLowerCase();
+    el.innerHTML =
+      `<img class="ic" loading="lazy" src="icons/${a.ic}.png?v=${V}" alt="">`+
+      `<div class="txt">`+
+        `<div class="nm">${esc(a.n)}${a.h?`<span class="hd">${esc(a.h)}</span>`:''}</div>`+
+        `<div class="ds">${esc(a.d)}</div>`+
+      `</div>`+
+      `<span class="badge ${bc}">${esc(a.cta||bl)}</span>`;
+    g.appendChild(el);
   });
-  s.appendChild(grid);
-  secWrap.appendChild(s);
+  s.appendChild(g);
+  wrap.appendChild(s);
 });
 
-// ---- Category pills ----------------------------------------------------
-const pillWrap = document.getElementById('pills');
-let activeSec = null;
-const mkPill = (label, count, sec)=>{
-  const b = document.createElement('button');
-  b.type='button'; b.className='pill'; b.setAttribute('aria-pressed', sec===activeSec);
-  b.innerHTML = esc(label) + (count!=null?` <span class="n">${count}</span>`:'');
-  b.onclick = ()=>{ activeSec = (activeSec===sec) ? null : sec; render(); };
-  return b;
-};
-const total = SECTIONS.reduce((t,s)=>t+s.apps.length,0);
-
-// ---- All-projects list -------------------------------------------------
+// Build the crawlable link list from the same catalog.
 const linkWrap = document.getElementById('sitelinks');
 SECTIONS.forEach(sec => sec.apps.forEach(a=>{
   if(!a.u) return;
@@ -412,27 +269,21 @@ SECTIONS.forEach(sec => sec.apps.forEach(a=>{
 // ---- Filtering ---------------------------------------------------------
 const q = document.getElementById('q'), empty = document.getElementById('empty');
 function render(){
-  pillWrap.innerHTML='';
-  pillWrap.appendChild(mkPill('All', total, null));
-  SECTIONS.forEach((s,i)=> pillWrap.appendChild(mkPill(s.title, s.apps.length, i)));
-
   const term = q.value.trim().toLowerCase();
-  let any=false;
+  let any = false;
   document.querySelectorAll('#sections section').forEach(sec=>{
-    const inSec = activeSec===null || +sec.dataset.sec === activeSec;
-    let shown=0;
-    sec.querySelectorAll('.card').forEach(c=>{
-      const hit = inSec && (!term || c.dataset.k.includes(term));
-      c.style.display = hit?'':'none'; if(hit) shown++;
+    let shown = 0;
+    sec.querySelectorAll('.c').forEach(c=>{
+      const hit = !term || c.dataset.k.includes(term);
+      c.style.display = hit ? '' : 'none'; if(hit) shown++;
     });
-    sec.classList.toggle('hidden', shown===0); if(shown) any=true;
+    sec.classList.toggle('hidden', shown === 0); if(shown) any = true;
   });
-  empty.style.display = any?'none':'block';
+  empty.style.display = any ? 'none' : 'block';
 }
 q.addEventListener('input', render);
-render();
 
-// "/" focuses the filter box.
+// "/" focuses the filter box; Escape clears it.
 document.addEventListener('keydown', e=>{
   if(e.key === '/' && document.activeElement !== q){ e.preventDefault(); q.focus(); }
   if(e.key === 'Escape' && document.activeElement === q){ q.value=''; render(); q.blur(); }
