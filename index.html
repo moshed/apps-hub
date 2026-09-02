@@ -193,12 +193,19 @@ const SECTIONS = [
     { n:"Stitch",        d:"Combine iPhone screenshots into one long, seam-matched image.", u:"https://stitch.dancykier.com", b:"store", ic:"stitch" },
     { n:"Pollenary",     d:"Daily pollen forecast with a morning push.", u:"https://pollenary.dancykier.com", b:"store", ic:"pollen" },
     { n:"Sports Alerts", d:"Real-time baseball prospect & call-up notifications.", u:"https://sportsalerts.dancykier.com", b:"live", ic:"sportsalerts" },
-    { n:"Bus Tracker",   d:"Live bus arrival times, no clutter.", u:"https://bustracker.dancykier.com", b:"live", ic:"bustracker" },
+    { n:"Bus Tracker",   d:"See the bus on a live map, and get told when it is nearly at the stop.", u:"https://bustracker.dancykier.com", b:"store", ic:"bustracker" },
     { n:"GroupSnap",     d:"One shared camera roll for everyone at your event.", u:"https://groupsnap.dancykier.com", b:"live", ic:"groupsnap" },
-    { n:"Dish It Out",   d:"Rate the dish, not the restaurant. Notes you share with friends.", b:"beta", ic:"dishitout" },
-    { n:"Media Check",   d:"Is this movie or show OK for my kid? Five severity scores.", b:"beta", ic:"mediacheck" },
+    { n:"Dish It Out",   d:"Rate the dish, not the restaurant. Notes you share with friends.", u:"https://dishitout.dancykier.com", b:"beta", ic:"dishitout" },
+    { n:"Media Check",   d:"Is this movie or show OK for my kid? Five severity scores.", u:"https://mediacheck.dancykier.com", b:"beta", ic:"mediacheck" },
     { n:"Intercom",      d:"Open the mic; everyone in the room hears you, phone locked.", u:"https://intercom.dancykier.com", b:"beta", ic:"intercom" },
-    { n:"Wordbox",       d:"Word games you play with friends, at your own pace.", b:"beta", ic:"wordbox" },
+    { n:"Wordbox",       d:"Word games you play with friends, at your own pace.", u:"https://wordbox.dancykier.com", b:"store", ic:"wordbox" },
+  ]},
+  { title:"Twitter bots", apps:[
+    { n:"MLB Home Runs",      h:"@mlbhomerbot",      d:"Every homer, plus how many parks it would clear.", u:"https://x.com/mlbhomerbot", b:"x", ic:"homerbot", bot:true, cta:"Follow" },
+    { n:"MLB Prospects",      h:"@mlbprospectsbot",  d:"Every call-up and MLB debut, the moment it's official.", u:"https://x.com/mlbprospectsbot", b:"x", ic:"prospectsbot", bot:true, cta:"Follow" },
+    { n:"MLB Bulk & Openers", h:"@MLBBulkbot",       d:"Opener and bulk-pitcher calls before first pitch.", u:"https://x.com/MLBBulkbot", b:"x", ic:"bulkbot", bot:true, cta:"Follow" },
+    { n:"MLB Injuries",       h:"@MLBInjuryBot",     d:"Injuries and IL moves the moment they're reported.", u:"https://x.com/MLBInjuryBot", b:"x", ic:"injurybot", bot:true, cta:"Follow" },
+    { n:"MLB Closers",        h:"@mlbclosersbot",    d:"Save situations and closer role changes as they shift.", u:"https://x.com/mlbclosersbot", b:"x", ic:"closersbot", bot:true, cta:"Follow" },
   ]},
   { title:"Web & games", apps:[
     { n:"Pinpoint",             d:"Read a clue, drop a pin — unlimited geography practice.", u:"https://geo.dancykier.com", b:"live", ic:"pinpoint" },
@@ -218,18 +225,11 @@ const SECTIONS = [
     { n:"RunApp",            d:"One-tap launcher for my iOS apps, with a live log viewer.", u:"https://github.com/moshed/run-app", b:"mac", ic:"runapp", cta:"GitHub" },
     { n:"ClipPiP",           d:"Float your clipboard in an always-on-top PiP panel.", u:"https://github.com/moshed/ClipPiP", b:"mac", ic:"clippip", cta:"GitHub" },
   ]},
-  { title:"Twitter bots", apps:[
-    { n:"MLB Home Runs",      h:"@mlbhomerbot",      d:"Every homer, plus how many parks it would clear.", u:"https://x.com/mlbhomerbot", b:"x", ic:"homerbot", bot:true, cta:"Follow" },
-    { n:"MLB Prospects",      h:"@mlbprospectsbot",  d:"Every call-up and MLB debut, the moment it's official.", u:"https://x.com/mlbprospectsbot", b:"x", ic:"prospectsbot", bot:true, cta:"Follow" },
-    { n:"MLB Bulk & Openers", h:"@MLBBulkbot",       d:"Opener and bulk-pitcher calls before first pitch.", u:"https://x.com/MLBBulkbot", b:"x", ic:"bulkbot", bot:true, cta:"Follow" },
-    { n:"MLB Injuries",       h:"@MLBInjuryBot",     d:"Injuries and IL moves the moment they're reported.", u:"https://x.com/MLBInjuryBot", b:"x", ic:"injurybot", bot:true, cta:"Follow" },
-    { n:"MLB Closers",        h:"@mlbclosersbot",    d:"Save situations and closer role changes as they shift.", u:"https://x.com/mlbclosersbot", b:"x", ic:"closersbot", bot:true, cta:"Follow" },
-  ]},
 ];
 
 const BADGE = { store:["b-store","App Store"], live:["b-live","Live"], mac:["b-mac","macOS"],
                 beta:["b-beta","TestFlight"], x:["b-x","X"] };
-const V = 9;
+const V = 10;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 const wrap = document.getElementById('sections');
