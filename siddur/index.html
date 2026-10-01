@@ -1,48 +1,328 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Siddur – Tefillah</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Siddur — A siddur that knows what day it is</title>
+<meta name="description" content="The right tefillah for today, with the day's additions already in place. Zmanim, a Hebrew calendar, Sefiras HaOmer and a minyan finder. Free, no ads.">
+<meta name="theme-color" content="#f7f8fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0d14" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Siddur — A siddur that knows what day it is">
+<meta property="og:description" content="The right tefillah for today, with the day's additions already in place. Free, no ads.">
+<meta property="og:image" content="https://siddur.dancykier.com/shots/daven.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"Siddur - Tefillah",
+ "description":"A siddur that knows what day it is: the right tefillah for today, zmanim, a Hebrew calendar, Sefiras HaOmer and a minyan finder.",
+ "operatingSystem":"iOS","applicationCategory":"ReferenceApplication","url":"https://siddur.dancykier.com",
+ "author":{"@type":"Person","name":"Moshe Dancykier"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<script>
+  // Apply the saved theme before first paint, so the page never flashes.
+  (function(){try{var t=localStorage.getItem('theme');
+    if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();
+</script>
 <style>
-:root{--bg:#fbfaf7;--fg:#1d1d1f;--mute:#6e6e73;--accent:#2f5bd3;--card:#fff;--line:#e6e4de}
-@media (prefers-color-scheme:dark){:root{--bg:#111214;--fg:#f2f2f4;--mute:#a1a1a6;--accent:#7fa2ff;--card:#1b1c1f;--line:#2c2d31}}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-main{max-width:720px;margin:0 auto;padding:48px 16px 80px}
-header{display:flex;gap:16px;align-items:center;margin-bottom:28px}
-header img{width:64px;height:64px;border-radius:15px}
-h1{font-size:28px;margin:0} h2{font-size:19px;margin:32px 0 6px}
-p,li{color:var(--fg)} .mute{color:var(--mute)} a{color:var(--accent)}
-nav{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:15px}
-nav a{margin-right:16px}
-.gallery{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 14px;margin:8px -16px 0;padding-left:16px;padding-right:16px;-webkit-overflow-scrolling:touch}
-.gallery figure{margin:0;flex:0 0 auto;scroll-snap-align:center;text-align:center}
-.gallery img{height:460px;width:auto;border-radius:26px;border:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.10);display:block}
-.gallery figcaption{font-size:14px;color:var(--mute);margin-top:8px}
-@media (max-width:480px){.gallery img{height:400px}}
-.badge{display:inline-block;margin:6px 0 4px;padding:9px 16px;border-radius:12px;background:var(--fg);color:var(--bg);font-weight:600;text-decoration:none}
-</style></head><body><main>
-<header><img src="icon.png" alt=""><div><h1>Siddur</h1><div class="mute">Siddur – Tefillah</div></div></header>
+  :root{
+    --bg:#f7f8fb; --panel:#fff; --panel-2:#eef1f7;
+    --border:#e3e7ef; --text:#0e1424; --dim:#566078; --mute:#8b94a7;
+    --accent:#2f6fe0; --accent-soft:#2f6fe014; --gold:#b9852a;
+    --shadow:0 1px 2px rgba(14,20,36,.04), 0 18px 40px -22px rgba(14,20,36,.28);
+    --sans:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,sans-serif;
+    --hebrew:"Frank Ruhl Libre","Times New Roman",serif;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --bg:#0a0d14; --panel:#121826; --panel-2:#1a2233;
+    --border:#232d40; --text:#ebf0f8; --dim:#9aa6bb; --mute:#647186;
+    --accent:#7ea6ff; --accent-soft:#7ea6ff1f; --gold:#e0b96a;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 22px 50px -26px rgba(0,0,0,.95);
+  }}
+  :root[data-theme="dark"]{
+    --bg:#0a0d14; --panel:#121826; --panel-2:#1a2233;
+    --border:#232d40; --text:#ebf0f8; --dim:#9aa6bb; --mute:#647186;
+    --accent:#7ea6ff; --accent-soft:#7ea6ff1f; --gold:#e0b96a;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 22px 50px -26px rgba(0,0,0,.95);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+  body{margin:0; background:var(--bg); color:var(--text); font:16px/1.6 var(--sans); -webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 20px}
+  .he{font-family:var(--hebrew); direction:rtl; unicode-bidi:isolate}
 
-<p>A siddur that knows what day it is. Siddur shows the right tefillah for today — with the day’s additions, like יעלה ויבא, הלל or טל ומטר, already in place, and the lines you don’t say today left out.</p>
-<p><span class="badge">Coming soon to the App Store</span></p>
-<div class="gallery">
-<figure><img src="shots/1.jpg" alt="Shacharis with today's changes at the top" loading="lazy"><figcaption>Today’s changes, up front</figcaption></figure>
-<figure><img src="shots/2.jpg" alt="Every section of the tefillah in a side panel" loading="lazy"><figcaption>Jump to any part</figcaption></figure>
-<figure><img src="shots/3.jpg" alt="The Amidah with notes" loading="lazy"><figcaption>Clear notes in the text</figcaption></figure>
-<figure><img src="shots/4.jpg" alt="Hebrew calendar" loading="lazy"><figcaption>Hebrew and civil calendar</figcaption></figure>
-<figure><img src="shots/5.jpg" alt="Minyan map" loading="lazy"><figcaption>Find a minyan nearby</figcaption></figure>
-<figure><img src="shots/6.jpg" alt="Tefillos list" loading="lazy"><figcaption>Tehillim, brachos and more</figcaption></figure>
+  /* Top bar */
+  .bar{display:flex; align-items:center; gap:10px; padding:18px 0}
+  .bar img{width:30px; height:30px; border-radius:8px}
+  .bar b{font-size:16px}
+  .bar .sp{flex:1}
+  .bar a.lnk{color:var(--dim); text-decoration:none; font-size:14px; padding:6px 8px}
+  .bar a.lnk:hover{color:var(--text)}
+  .theme-btn{width:34px; height:34px; border-radius:50%; border:1px solid var(--border); background:var(--panel);
+    color:var(--dim); display:grid; place-items:center; cursor:pointer}
+  .theme-btn svg{width:16px; height:16px}
+
+  /* Hero */
+  .hero{display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center; padding:36px 0 30px}
+  .eyebrow{display:inline-flex; gap:8px; align-items:center; font-size:13px; font-weight:600; color:var(--accent);
+    background:var(--accent-soft); padding:6px 12px; border-radius:999px}
+  h1{font-size:clamp(34px,5.4vw,56px); line-height:1.05; letter-spacing:-.02em; margin:16px 0 14px}
+  h1 .he{display:block; font-size:.62em; color:var(--gold); font-weight:700; letter-spacing:0; margin-top:10px}
+  .lede{font-size:18px; color:var(--dim); max-width:34em; margin:0 0 22px}
+  .cta{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+  .btn{display:inline-flex; align-items:center; gap:10px; padding:13px 20px; border-radius:14px; font-weight:600;
+    text-decoration:none; background:var(--text); color:var(--bg)}
+  .btn svg{width:20px; height:20px}
+  .btn.ghost{background:transparent; color:var(--text); border:1px solid var(--border)}
+  .free{font-size:14px; color:var(--mute); margin-top:14px}
+  .phone{justify-self:center; position:relative}
+  .phone img{width:min(330px,78vw); border-radius:44px; box-shadow:var(--shadow); border:1px solid var(--border); display:block}
+
+  /* Pills strip */
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 0}
+  .chip{font-family:var(--hebrew); font-size:17px; color:var(--accent); background:var(--accent-soft);
+    padding:4px 12px; border-radius:999px; direction:rtl}
+
+  /* Feature rows */
+  section.f{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; padding:56px 0;
+    border-top:1px solid var(--border)}
+  section.f.flip .shot{order:2}
+  .shot{justify-self:center}
+  .shot img{width:min(300px,74vw); border-radius:40px; box-shadow:var(--shadow); border:1px solid var(--border); display:block}
+  .shot.pair{display:flex; gap:16px}
+  .shot.pair img{width:min(240px,42vw); border-radius:32px}
+  .kicker{font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--gold)}
+  h2{font-size:clamp(26px,3.4vw,36px); line-height:1.12; letter-spacing:-.015em; margin:8px 0 12px}
+  .f p{color:var(--dim); margin:0 0 14px}
+  ul.ticks{list-style:none; padding:0; margin:0}
+  ul.ticks li{position:relative; padding:6px 0 6px 28px; color:var(--text)}
+  ul.ticks li::before{content:""; position:absolute; left:2px; top:12px; width:14px; height:14px; border-radius:50%;
+    background:var(--accent-soft); box-shadow:inset 0 0 0 4px var(--accent)}
+
+  /* Grid of small features */
+  .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; padding:20px 0 56px}
+  .card{background:var(--panel); border:1px solid var(--border); border-radius:18px; padding:18px}
+  .card .ic{font-size:22px}
+  .card h3{font-size:16px; margin:8px 0 4px}
+  .card p{font-size:14px; color:var(--dim); margin:0}
+  .sect-title{text-align:center; padding:56px 0 6px; border-top:1px solid var(--border)}
+  .sect-title h2{margin-bottom:4px}
+  .sect-title p{color:var(--dim); margin:0}
+
+  /* Free + FAQ */
+  .free-box{background:linear-gradient(180deg,var(--accent-soft),transparent); border:1px solid var(--border);
+    border-radius:24px; padding:34px; text-align:center; margin:10px 0 56px}
+  .free-box h2{margin-top:0}
+  .free-box p{color:var(--dim); max-width:36em; margin:0 auto}
+  details{background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:14px 18px; margin:10px 0}
+  summary{font-weight:600; cursor:pointer}
+  details p{color:var(--dim); margin:10px 0 2px}
+  footer{border-top:1px solid var(--border); margin-top:50px; padding:26px 0 60px; color:var(--mute); font-size:14px;
+    display:flex; flex-wrap:wrap; gap:16px; justify-content:space-between}
+  footer a{color:var(--dim); text-decoration:none; margin-right:16px}
+  footer a:hover{color:var(--text)}
+
+  @media (max-width:820px){
+    .hero{grid-template-columns:1fr; text-align:left; padding-top:16px}
+    .phone{order:2}
+    section.f{grid-template-columns:1fr; gap:26px; padding:44px 0}
+    section.f.flip .shot{order:0}
+    .shot{order:0}
+    .grid{grid-template-columns:1fr 1fr}
+    .bar a.lnk.hide-s{display:none}
+  }
+  @media (max-width:520px){ .grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="bar">
+  <img src="icon.png" alt=""><b>Siddur</b>
+  <span class="sp"></span>
+  <a class="lnk hide-s" href="#features">Features</a>
+  <a class="lnk hide-s" href="#faq">FAQ</a>
+  <a class="lnk" href="support">Support</a>
+  <button class="theme-btn" id="theme" aria-label="Switch light or dark">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
 </div>
-<h2>What it does</h2>
-<ul>
-<li>Shacharis, Mincha and Maariv in Ashkenaz, Sefard, Ari and Edot HaMizrach</li>
-<li>Hallel, Musaf, Hoshanos, the Torah reading and no-Tachanun days, marked before each section</li>
-<li>Zmanim for where you are</li>
-<li>A Hebrew and civil calendar with candle lighting, havdalah and fast times — and export to your iPhone’s Calendar, choosing exactly what to add</li>
-<li>Sefiras HaOmer with a nightly reminder</li>
-<li>A compass that points to Jerusalem</li>
-<li>Find or start a minyan near you</li>
-</ul>
-<p>Siddur is free. No ads, no subscriptions, and nothing is locked.</p>
-<p class="mute">Questions or a mistake in the text? <a href="support">Support</a> · <a href="mailto:siddur@dancykier.com">siddur@dancykier.com</a></p>
-<nav><a href="./">Siddur</a><a href="privacy.html">Privacy</a><a href="support.html">Support</a><a href="https://dancykier.com">More apps</a></nav>
-</main></body></html>
+
+<header class="hero">
+  <div>
+    <span class="eyebrow">✨ Free · No ads · Nothing locked</span>
+    <h1>A siddur that knows what day it is.<span class="he">סידור שיודע איזה יום היום</span></h1>
+    <p class="lede">Siddur opens to the right tefillah for right now, with today's additions already in place and the lines you don't say today left out. No more flipping, no more guessing.</p>
+    <div class="cta">
+      <span class="btn" aria-label="Coming soon to the App Store">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.02-1.5-2.62-1.7-3.19-1.72-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.2 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.14.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.32-3.55zM14.2 6.13c.61-.74 1.02-1.76.91-2.78-.88.04-1.94.59-2.57 1.32-.56.65-1.06 1.69-.93 2.69.98.08 1.98-.5 2.59-1.23z"/></svg>
+        Coming soon to the App Store
+      </span>
+      <a class="btn ghost" href="#features">See what it does</a>
+    </div>
+    <div class="chips" aria-label="Lines Siddur puts in place by itself">
+      <span class="chip">יעלה ויבא</span><span class="chip">הלל</span><span class="chip">טל ומטר</span>
+      <span class="chip">על הנסים</span><span class="chip">עננו</span><span class="chip">אין תחנון</span>
+    </div>
+    <p class="free">Ashkenaz · Sefard · Ari · Edot HaMizrach — iPhone and iPad</p>
+  </div>
+  <div class="phone"><img src="shots/daven.jpg" alt="Shacharis on Chol HaMoed with today's changes at the top" width="330"></div>
+</header>
+
+<span id="features"></span>
+
+<section class="f">
+  <div class="shot"><img src="shots/today.jpg" alt="Popover listing what is different in today's tefillah" loading="lazy"></div>
+  <div>
+    <div class="kicker">Today's tefillah</div>
+    <h2>It already knows what's different today.</h2>
+    <p>Rosh Chodesh, Chol HaMoed, Chanukah, a fast day, the Aseres Yemei Teshuvah — Siddur works it out from the date and where you are, and sets the text for you.</p>
+    <ul class="ticks">
+      <li>A card at the top says what changes today. Tap it for a short explanation.</li>
+      <li>Lines not said today are hidden — or shown dimmed, if you prefer.</li>
+      <li>Hallel, Musaf, Hoshanos and the Torah reading appear on the days they belong.</li>
+      <li>For 30 days after mashiv haruach or tal umatar changes, a gentle reminder sits by the line.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="f flip">
+  <div class="shot"><img src="shots/outline.jpg" alt="Side panel with every section and part of the tefillah" loading="lazy"></div>
+  <div>
+    <div class="kicker">Find your place</div>
+    <h2>Jump to any part in one move.</h2>
+    <p>A slim rail on the edge shows where you are. Tap it to see every section and part of the tefillah, or drag it to fly through the text.</p>
+    <ul class="ticks">
+      <li>Pinch to make the text bigger or smaller — it re-flows as you go.</li>
+      <li>Clear Hebrew fonts, with or without nekudot.</li>
+      <li>The right tefillah opens by itself for the time of day.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="f">
+  <div class="shot"><img src="shots/notes.jpg" alt="The Amidah with instructions in grey boxes" loading="lazy"></div>
+  <div>
+    <div class="kicker">Notes you can read</div>
+    <h2>Instructions in plain sight — and in English.</h2>
+    <p>The small print of a siddur becomes clear notes in the text. Tap any note to read it in English.</p>
+    <ul class="ticks">
+      <li>Choose how much to see: just directions, the halachos too, or everything.</li>
+      <li>English translations from Sefaria, credited in the app.</li>
+      <li>Works offline — every text is inside the app.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="f flip">
+  <div class="shot pair">
+    <img src="shots/zmanim.jpg" alt="Zmanim for today" loading="lazy">
+    <img src="shots/calendar.jpg" alt="Hebrew calendar" loading="lazy">
+  </div>
+  <div>
+    <div class="kicker">Zmanim &amp; calendar</div>
+    <h2>Zmanim for exactly where you are.</h2>
+    <p>From alos to tzeis, worked out for your location. A Hebrew and civil calendar shows every Yom Tov, fast, Rosh Chodesh and the Omer.</p>
+    <ul class="ticks">
+      <li>Tap any day for its zmanim.</li>
+      <li>Candle lighting, havdalah, fast start and end, Chanukah lighting and Erev Pesach chametz times.</li>
+      <li>Switch between Hebrew months (right to left) and civil months.</li>
+      <li>Knows when you're in Israel, with two days of Yom Tov for visitors who keep them.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="f">
+  <div class="shot pair">
+    <img src="shots/events.jpg" alt="This month's holidays with their times" loading="lazy">
+    <img src="shots/export.jpg" alt="Choose what to export to Calendar" loading="lazy">
+  </div>
+  <div>
+    <div class="kicker">In your iPhone's Calendar</div>
+    <h2>Put the Jewish year in your calendar — just the parts you want.</h2>
+    <p>Export holidays, fasts and times to the Calendar app on your iPhone, iPad and Mac. Pick exactly what goes in: Yom Tov but not Rosh Chodesh, candle lighting but not havdalah, with or without alerts.</p>
+    <ul class="ticks">
+      <li>Everything goes into its own "Siddur" calendar.</li>
+      <li>Export again and it updates — nothing is added twice.</li>
+      <li>English names, Hebrew names, or both.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="f flip">
+  <div class="shot"><img src="shots/minyan.jpg" alt="Map of a minyan forming nearby" loading="lazy"></div>
+  <div>
+    <div class="kicker">Minyan</div>
+    <h2>Need a minyan? See who's nearby.</h2>
+    <p>Tap "I'm Looking" and people around you see it on the map. Start a minyan at a place and time, and chat with the people coming.</p>
+    <ul class="ticks">
+      <li>Get an alert when a minyan forms near you.</li>
+      <li>No account — just pick a display name.</li>
+      <li>Report and block in every chat, with a human review of every report.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="f">
+  <div class="shot"><img src="shots/tefillos.jpg" alt="Tefillos: Tehillim, brachos, Tefillas HaDerech" loading="lazy"></div>
+  <div>
+    <div class="kicker">Every tefillah</div>
+    <h2>Tehillim, brachos and the rest, a search away.</h2>
+    <p>Birkas HaMazon, Al HaMichya, Tefillas HaDerech, Krias Shema al HaMitah, Kiddush Levana, the Megillah and all of Tehillim. Search by name, by chapter number, or by words inside the text.</p>
+    <ul class="ticks">
+      <li>Today's extras rise to the top, like Lulav and Hoshanos on Sukkos.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="sect-title">
+  <h2>And all the small things</h2>
+  <p>The details that make a siddur feel right.</p>
+</div>
+<div class="grid">
+  <div class="card"><div class="ic">🌾</div><h3>Sefiras HaOmer</h3><p>Tonight's count in Maariv, a reminder at tzeis, and a morning nudge if you haven't counted.</p></div>
+  <div class="card"><div class="ic">🧭</div><h3>Toward Jerusalem</h3><p>A compass that points to Har HaBayis and turns green when you face it.</p></div>
+  <div class="card"><div class="ic">🔔</div><h3>Reminders</h3><p>Zmanim, candle lighting, fasts and the Omer. Never during Shabbos or Yom Tov.</p></div>
+  <div class="card"><div class="ic">📖</div><h3>Four nusachim</h3><p>Ashkenaz, Sefard, Ari and Edot HaMizrach, with your minhag for מוריד הטל and Hoshanos.</p></div>
+  <div class="card"><div class="ic">🌙</div><h3>Light and dark</h3><p>Easy on the eyes for Maariv, with your choice of colour.</p></div>
+  <div class="card"><div class="ic">✈️</div><h3>Works anywhere</h3><p>The texts are on your phone. Zmanim follow you when you travel.</p></div>
+</div>
+
+<div class="free-box">
+  <h2>Free. Really.</h2>
+  <p>No ads, no subscriptions, no account, and nothing is locked. If Siddur helps you daven, you can leave a small tip in the app — it unlocks nothing, because everything is already yours.</p>
+</div>
+
+<div id="faq">
+  <h2>Questions</h2>
+  <details><summary>Which nusach does Siddur have?</summary><p>Ashkenaz, Sefard, Ari and Edot HaMizrach. Pick yours in Settings; you can change it any time.</p></details>
+  <details><summary>How does it know what to say today?</summary><p>From the Hebrew date and your location — including whether you're in Israel. It follows the standard rules for each addition, like יעלה ויבא, טל ומטר and Hallel. If something looks wrong, email us and we'll fix it.</p></details>
+  <details><summary>I'm visiting Israel and keep two days of Yom Tov.</summary><p>Turn on "Keep 2 Days Yom Tov" in Settings. The tefillos and the calendar follow it.</p></details>
+  <details><summary>Does it work without internet?</summary><p>Yes. Every tefillah is inside the app. Only the minyan map and chat need a connection.</p></details>
+  <details><summary>Where do the texts come from?</summary><p>From <a href="https://www.sefaria.org">Sefaria</a>, under their open licenses. Each edition is credited in the app.</p></details>
+  <details><summary>What do you do with my data?</summary><p>The siddur, zmanim and calendar never leave your phone. Only the minyan features send anything, and only what they need. See the <a href="privacy">privacy policy</a>.</p></details>
+</div>
+
+<footer>
+  <div><a href="support">Support</a><a href="privacy">Privacy</a><a href="mailto:siddur@dancykier.com">siddur@dancykier.com</a><a href="https://dancykier.com">More apps</a></div>
+  <div>Made by Moshe Dancykier</div>
+</footer>
+
+</div>
+<script>
+  // Light / dark switch, remembered on this device only
+  document.getElementById('theme').addEventListener('click', function(){
+    var root=document.documentElement, cur=root.getAttribute('data-theme');
+    var dark = cur ? cur==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try{ localStorage.setItem('theme', next); }catch(e){}
+  });
+</script>
+</body>
+</html>
