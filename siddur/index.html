@@ -13,17 +13,36 @@ h1{font-size:28px;margin:0} h2{font-size:19px;margin:32px 0 6px}
 p,li{color:var(--fg)} .mute{color:var(--mute)} a{color:var(--accent)}
 nav{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:15px}
 nav a{margin-right:16px}
+.gallery{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 14px;margin:8px -16px 0;padding-left:16px;padding-right:16px;-webkit-overflow-scrolling:touch}
+.gallery figure{margin:0;flex:0 0 auto;scroll-snap-align:center;text-align:center}
+.gallery img{height:460px;width:auto;border-radius:26px;border:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.10);display:block}
+.gallery figcaption{font-size:14px;color:var(--mute);margin-top:8px}
+@media (max-width:480px){.gallery img{height:400px}}
+.badge{display:inline-block;margin:6px 0 4px;padding:9px 16px;border-radius:12px;background:var(--fg);color:var(--bg);font-weight:600;text-decoration:none}
 </style></head><body><main>
 <header><img src="icon.png" alt=""><div><h1>Siddur</h1><div class="mute">Siddur – Tefillah</div></div></header>
 
 <p>A siddur that knows what day it is. Siddur shows the right tefillah for today — with the day’s additions, like יעלה ויבא, הלל or טל ומטר, already in place, and the lines you don’t say today left out.</p>
+<p><span class="badge">Coming soon to the App Store</span></p>
+<div class="gallery">
+<figure><img src="shots/1.jpg" alt="Shacharis with today's changes at the top" loading="lazy"><figcaption>Today’s changes, up front</figcaption></figure>
+<figure><img src="shots/2.jpg" alt="Every section of the tefillah in a side panel" loading="lazy"><figcaption>Jump to any part</figcaption></figure>
+<figure><img src="shots/3.jpg" alt="The Amidah with notes" loading="lazy"><figcaption>Clear notes in the text</figcaption></figure>
+<figure><img src="shots/4.jpg" alt="Hebrew calendar" loading="lazy"><figcaption>Hebrew and civil calendar</figcaption></figure>
+<figure><img src="shots/5.jpg" alt="Minyan map" loading="lazy"><figcaption>Find a minyan nearby</figcaption></figure>
+<figure><img src="shots/6.jpg" alt="Tefillos list" loading="lazy"><figcaption>Tehillim, brachos and more</figcaption></figure>
+</div>
+<h2>What it does</h2>
 <ul>
 <li>Shacharis, Mincha and Maariv in Ashkenaz, Sefard, Ari and Edot HaMizrach</li>
-<li>Zmanim for where you are, and a Hebrew calendar with fast and holiday times</li>
-<li>A compass that points to Jerusalem</li>
+<li>Hallel, Musaf, Hoshanos, the Torah reading and no-Tachanun days, marked before each section</li>
+<li>Zmanim for where you are</li>
+<li>A Hebrew and civil calendar with candle lighting, havdalah and fast times — and export to your iPhone’s Calendar, choosing exactly what to add</li>
 <li>Sefiras HaOmer with a nightly reminder</li>
+<li>A compass that points to Jerusalem</li>
 <li>Find or start a minyan near you</li>
 </ul>
 <p>Siddur is free. No ads, no subscriptions, and nothing is locked.</p>
+<p class="mute">Questions or a mistake in the text? <a href="support">Support</a> · <a href="mailto:siddur@dancykier.com">siddur@dancykier.com</a></p>
 <nav><a href="./">Siddur</a><a href="privacy.html">Privacy</a><a href="support.html">Support</a><a href="https://dancykier.com">More apps</a></nav>
 </main></body></html>
